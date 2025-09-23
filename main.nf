@@ -41,21 +41,22 @@
         path "nextclade_sample_summary.json"
         path "private_mutations.csv"
         path "nextclade_summary.md"
-      '''
+      script:
+      """
       set -euo pipefail
 
       # 1) Pull single result by seqName
       jq --arg SAMPLE "${params.sample}" '
         .results
-        | map(select(.seqName == $SAMPLE))
+        | map(select(.seqName == \$SAMPLE))
         | if length==1 then .[0] else empty end
       ' ${json} > nextclade_sample_summary.json || true
 
       if [ ! -s nextclade_sample_summary.json ]; then
-        echo "FATAL: Sample \"${params.sample}\" not found in ${json}" >&2
+        echo "FATAL: Sample \\"${params.sample}\\" not found in ${json}" >&2
         echo '{}' > nextclade_sample_summary.json
         echo "sample,kind,detail" > private_mutations.csv
-        printf "# Nextclade summary\n\nSample %s not found in %s\n" "${params.sample}" "${json}" > nextclade_summary.md
+        printf "# Nextclade summary\\n\\nSample %s not found in %s\\n" "${params.sample}" "${json}" > nextclade_summary.md
         exit 0
       fi
 
@@ -96,7 +97,7 @@ st=(d.get("stopCodons",{}) or {}).get("stopCodons",[]) or []
 aa=d.get("aaSubstitutions",[]) or []
 aa_stops=[x for x in aa if x.get("qryAa")=="*"]
 
-print(f"# Nextclade summary for {s}\n")
+print(f"# Nextclade summary for {s}\\n")
 print("## Frameshifts")
 if not fs:
     print("- none")
@@ -106,7 +107,7 @@ else:
         codon=f.get("codon",{})
         print(f"- {cds}: codons {codon.get('begin')}–{codon.get('end')}")
 
-print("\n## Premature stop codons")
+print("\\n## Premature stop codons")
 if not st and not aa_stops:
     print("- none")
 else:
@@ -115,10 +116,10 @@ else:
     for e in aa_stops:
         print(f"- {e.get('cdsName','?')} at codon {e.get('pos')} (AA *) via aaSubstitution)")
 
-print("\n## Private mutations")
+print("\\n## Private mutations")
 print("- see `private_mutations.csv`")
 PY
-      '''
+      """
     }
 
     // -------- Mapping --------
@@ -205,11 +206,12 @@ bwa-mem2 index ${fasta} || true
         path gff
       output:
         path "cds.bed"
-      '''
+      script:
+      """
       set -euo pipefail
       # Emit attributes verbatim; we'll parse in Python to derive gene names.
-      awk '$3=="CDS"{print $1"\t"$4-1"\t"$5"\t"$9"\t.\t"$7}' ${gff} > cds.bed
-      '''
+      awk '\$3=="CDS"{print \$1"\\t"\$4-1"\\t"\$5"\\t"\$9"\\t.\\t"\$7}' ${gff} > cds.bed
+      """
     }
 
     // -------- VCF -> BED-like rows --------
@@ -221,18 +223,19 @@ bwa-mem2 index ${fasta} || true
       output:
         path "ilmn.indels.bed"
         path "ont.indels.bed"
-      '''
+      script:
+      """
       set -euo pipefail
       : > ilmn.indels.bed; : > ont.indels.bed
       if [ -f "${ilmn_vcf}" ] && [ "${ilmn_vcf}" != "NO_FILE" ]; then
-        bcftools query -f '%CHROM\t%POS\t%REF\t%ALT\t%INFO/DP\t%QUAL\t[%AF]\t%TYPE\n' ${ilmn_vcf} \
-          | awk 'BEGIN{OFS="\t"}{lr=length($3);la=length($4);d=(la>lr?la-lr:lr-la);fs=(d%3==0)?"in-frame":"frameshift";print $1,$2-1,$2,"ILMN",$3,$4,d,fs,$5,$6,$7,$8}' > ilmn.indels.bed
+        bcftools query -f '%CHROM\\t%POS\\t%REF\\t%ALT\\t%INFO/DP\\t%QUAL\\t[%AF]\\t%TYPE\\n' ${ilmn_vcf} \\
+          | awk 'BEGIN{OFS="\\t"}{lr=length(\$3);la=length(\$4);d=(la>lr?la-lr:lr-la);fs=(d%3==0)?"in-frame":"frameshift";print \$1,\$2-1,\$2,"ILMN",\$3,\$4,d,fs,\$5,\$6,\$7,\$8}' > ilmn.indels.bed
       fi
       if [ -f "${ont_vcf}" ] && [ "${ont_vcf}" != "NO_FILE" ]; then
-        bcftools query -f '%CHROM\t%POS\t%REF\t%ALT\t%INFO/DP\t%QUAL\t[%AF]\t%TYPE\n' ${ont_vcf} \
-          | awk 'BEGIN{OFS="\t"}{lr=length($3);la=length($4);d=(la>lr?la-lr:lr-la);fs=(d%3==0)?"in-frame":"frameshift";print $1,$2-1,$2,"ONT",$3,$4,d,fs,$5,$6,$7,$8}' > ont.indels.bed
+        bcftools query -f '%CHROM\\t%POS\\t%REF\\t%ALT\\t%INFO/DP\\t%QUAL\\t[%AF]\\t%TYPE\\n' ${ont_vcf} \\
+          | awk 'BEGIN{OFS="\\t"}{lr=length(\$3);la=length(\$4);d=(la>lr?la-lr:lr-la);fs=(d%3==0)?"in-frame":"frameshift";print \$1,\$2-1,\$2,"ONT",\$3,\$4,d,fs,\$5,\$6,\$7,\$8}' > ont.indels.bed
       fi
-      '''
+      """
     }
 
     // -------- Verify frameshifts & harmonize gene names --------

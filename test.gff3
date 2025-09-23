@@ -1,0 +1,3 @@
+##gff-version 3
+NC_063383.1	RefSeq	CDS	1	100	.	+	0	ID=cds1;Name=gene1
+NC_063383.1	RefSeq	CDS	200	300	.	+	0	ID=cds2;Name=gene2
