@@ -147,14 +147,13 @@ bwa-mem2 index ${fasta} || true
         params.ont_fq
       input:
         path fq
-        path mmi
         path fasta
       output:
         path "aln.ont.bam"
         path "aln.ont.bam.bai"
       '''
       set -euo pipefail
-minimap2 -d ref.mmi ${fasta} || true
+      minimap2 -d ref.mmi ${fasta} || true
       minimap2 -t 32 -x map-ont ref.mmi ${fq} | samtools sort -@8 -o aln.ont.bam
       samtools index aln.ont.bam
       '''
@@ -162,7 +161,8 @@ minimap2 -d ref.mmi ${fasta} || true
 
     // -------- Variant calling --------
     process CallIllumina {
-  input:
+      tag "call_illumina"
+      input:
         path fasta
         path bam
       output:
@@ -179,7 +179,8 @@ minimap2 -d ref.mmi ${fasta} || true
     }
 
     process CallONT {
-  input:
+      tag "call_ont"
+      input:
         path fasta
         path bam
       output:
@@ -215,19 +216,19 @@ minimap2 -d ref.mmi ${fasta} || true
     process IndelsToBeds {
       tag "indels_to_bed"
       input:
-        path ilmn_vcf optional true from file("ilmn.norm.indels.vcf.gz")
-        path ont_vcf  optional true from file("ont.norm.indels.vcf.gz")
+        path ilmn_vcf, stageAs: "ilmn.norm.indels.vcf.gz"
+        path ont_vcf, stageAs: "ont.norm.indels.vcf.gz"
       output:
-        path "ilmn.indels.bed" optional true
-        path "ont.indels.bed"  optional true
+        path "ilmn.indels.bed"
+        path "ont.indels.bed"
       '''
       set -euo pipefail
       : > ilmn.indels.bed; : > ont.indels.bed
-      if [ -f "${ilmn_vcf}" ]; then
+      if [ -f "${ilmn_vcf}" ] && [ "${ilmn_vcf}" != "NO_FILE" ]; then
         bcftools query -f '%CHROM\t%POS\t%REF\t%ALT\t%INFO/DP\t%QUAL\t[%AF]\t%TYPE\n' ${ilmn_vcf} \
           | awk 'BEGIN{OFS="\t"}{lr=length($3);la=length($4);d=(la>lr?la-lr:lr-la);fs=(d%3==0)?"in-frame":"frameshift";print $1,$2-1,$2,"ILMN",$3,$4,d,fs,$5,$6,$7,$8}' > ilmn.indels.bed
       fi
-      if [ -f "${ont_vcf}" ]; then
+      if [ -f "${ont_vcf}" ] && [ "${ont_vcf}" != "NO_FILE" ]; then
         bcftools query -f '%CHROM\t%POS\t%REF\t%ALT\t%INFO/DP\t%QUAL\t[%AF]\t%TYPE\n' ${ont_vcf} \
           | awk 'BEGIN{OFS="\t"}{lr=length($3);la=length($4);d=(la>lr?la-lr:lr-la);fs=(d%3==0)?"in-frame":"frameshift";print $1,$2-1,$2,"ONT",$3,$4,d,fs,$5,$6,$7,$8}' > ont.indels.bed
       fi
@@ -242,7 +243,7 @@ minimap2 -d ref.mmi ${fasta} || true
         path ilmn
         path ont
         path nsum
-        val alias_map_path from Channel.value(params.alias_map ?: "")
+        val alias_map_path
       output:
         path "frameshift_report.csv"
         path "harmonized_gene_map.tsv"
@@ -369,13 +370,36 @@ PY
 
   FilterNextcladeForSample(nextclade_ch)
 
-  MapIllumina(ilmn_r1_ch, ilmn_r2_ch, consensus_ch)
-  MapONT(ont_fq_ch, consensus_ch, consensus_ch)
+  // Only run mapping if reads are provided
+  if (params.ilmn_r1 && params.ilmn_r2) {
+    MapIllumina(ilmn_r1_ch, ilmn_r2_ch, consensus_ch)
+    CallIllumina(consensus_ch, MapIllumina.out[0])  // First output is BAM file
+    ilmn_vcf_ch = CallIllumina.out[0]  // First output is VCF file
+  } else {
+    ilmn_vcf_ch = Channel.empty()
+  }
 
-  CallIllumina(consensus_ch, MapIllumina.out.filter{ it.name == "aln.ilmn.bam" })
-  CallONT(consensus_ch, MapONT.out.filter{ it.name == "aln.ont.bam" })
+  if (params.ont_fq) {
+    MapONT(ont_fq_ch, consensus_ch)
+    CallONT(consensus_ch, MapONT.out[0])  // First output is BAM file
+    ont_vcf_ch = CallONT.out[0]  // First output is VCF file
+  } else {
+    ont_vcf_ch = Channel.empty()
+  }
 
   MakeCdsBed(gff_ch)
-  IndelsToBeds(CallIllumina.out.filter{ it.name.endsWith(".vcf.gz") }, CallONT.out.filter{ it.name.endsWith(".vcf.gz") })
-  VerifyFrameshifts()
+  
+  // Handle empty channels for IndelsToBeds
+  ilmn_vcf_input = ilmn_vcf_ch.ifEmpty(file("NO_FILE"))
+  ont_vcf_input = ont_vcf_ch.ifEmpty(file("NO_FILE"))
+  
+  IndelsToBeds(ilmn_vcf_input, ont_vcf_input)
+  
+  VerifyFrameshifts(
+    MakeCdsBed.out,
+    IndelsToBeds.out[0],  // ilmn.indels.bed
+    IndelsToBeds.out[1],  // ont.indels.bed
+    FilterNextcladeForSample.out[0],  // nextclade_sample_summary.json
+    Channel.value(params.alias_map ?: "")
+  )
 }
