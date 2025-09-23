@@ -188,6 +188,12 @@ PY
       bcftools norm -f ${fasta} -m -both ilmn.vcf \\
         | bcftools filter -i 'QUAL>=20 && TYPE="INDEL"' \\
         | bcftools sort -Oz -o ilmn.norm.indels.vcf.gz
+      
+      # Check if VCF has variants, if not create empty indexed VCF
+      if [ ! -s ilmn.norm.indels.vcf.gz ] || [ \$(bcftools view -H ilmn.norm.indels.vcf.gz | wc -l) -eq 0 ]; then
+        # Create empty VCF with proper header
+        bcftools view -h ilmn.vcf | bcftools sort -Oz -o ilmn.norm.indels.vcf.gz
+      fi
       bcftools index ilmn.norm.indels.vcf.gz
       """
     }
@@ -209,6 +215,12 @@ PY
       bcftools norm -f ${fasta} -m -both ont.vcf.gz \\
         | bcftools filter -i 'QUAL>=20 && TYPE="INDEL"' \\
         | bcftools sort -Oz -o ont.norm.indels.vcf.gz
+      
+      # Check if VCF has variants, if not create empty indexed VCF
+      if [ ! -s ont.norm.indels.vcf.gz ] || [ \$(bcftools view -H ont.norm.indels.vcf.gz | wc -l) -eq 0 ]; then
+        # Create empty VCF with proper header
+        bcftools view -h ont.vcf.gz | bcftools sort -Oz -o ont.norm.indels.vcf.gz
+      fi
       bcftools index ont.norm.indels.vcf.gz
       """
     }
