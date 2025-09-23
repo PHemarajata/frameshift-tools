@@ -1,0 +1,94 @@
+Sep-23 13:54:31.476 [main] DEBUG nextflow.cli.Launcher - $> nextflow run main.nf --sample BIDI_mpox_case2_hybrid_APHLproject_work_20250923_103207_DQ011155.1 --nextclade_json nextclade.json --gff sequence.gff3
+Sep-23 13:54:31.559 [main] DEBUG nextflow.cli.CmdRun - N E X T F L O W  ~  version 25.04.7
+Sep-23 13:54:31.582 [main] DEBUG nextflow.plugin.PluginsFacade - Setting up plugin manager > mode=prod; embedded=false; plugins-dir=/home/cdcadmin/.nextflow/plugins; core-plugins: nf-amazon@2.15.0-patch1,nf-azure@1.16.0-patch1,nf-cloudcache@0.4.3,nf-codecommit@0.2.3,nf-console@1.2.1,nf-google@1.21.1,nf-k8s@1.0.0,nf-tower@1.11.4-patch1,nf-wave@1.12.1
+Sep-23 13:54:31.605 [main] INFO  o.pf4j.DefaultPluginStatusProvider - Enabled plugins: []
+Sep-23 13:54:31.606 [main] INFO  o.pf4j.DefaultPluginStatusProvider - Disabled plugins: []
+Sep-23 13:54:31.608 [main] INFO  org.pf4j.DefaultPluginManager - PF4J version 3.12.0 in 'deployment' mode
+Sep-23 13:54:31.619 [main] INFO  org.pf4j.AbstractPluginManager - No plugins
+Sep-23 13:54:31.640 [main] DEBUG nextflow.config.ConfigBuilder - Found config local: /home/cdcadmin/Downloads/frameshift-check/nextflow.config
+Sep-23 13:54:31.642 [main] DEBUG nextflow.config.ConfigBuilder - Parsing config file: /home/cdcadmin/Downloads/frameshift-check/nextflow.config
+Sep-23 13:54:31.670 [main] DEBUG n.secret.LocalSecretsProvider - Secrets store: /home/cdcadmin/.nextflow/secrets/store.json
+Sep-23 13:54:31.673 [main] DEBUG nextflow.secret.SecretsLoader - Discovered secrets providers: [nextflow.secret.LocalSecretsProvider@1f12e153] - activable => nextflow.secret.LocalSecretsProvider@1f12e153
+Sep-23 13:54:31.705 [main] DEBUG nextflow.config.ConfigBuilder - Applying config profile: `standard`
+Sep-23 13:54:32.234 [main] DEBUG nextflow.cli.CmdRun - Applied DSL=2 from script declaration
+Sep-23 13:54:32.253 [main] DEBUG nextflow.cli.CmdRun - Launching `main.nf` [exotic_goldberg] DSL2 - revision: f66624d4dc
+Sep-23 13:54:32.254 [main] DEBUG nextflow.plugin.PluginsFacade - Plugins default=[]
+Sep-23 13:54:32.254 [main] DEBUG nextflow.plugin.PluginsFacade - Plugins resolved requirement=[]
+Sep-23 13:54:32.309 [main] DEBUG nextflow.Session - Session UUID: d8d58cf9-d414-4c2e-baae-30a1efaddd70
+Sep-23 13:54:32.310 [main] DEBUG nextflow.Session - Run name: exotic_goldberg
+Sep-23 13:54:32.310 [main] DEBUG nextflow.Session - Executor pool size: 128
+Sep-23 13:54:32.318 [main] DEBUG nextflow.file.FilePorter - File porter settings maxRetries=3; maxTransfers=50; pollTimeout=null
+Sep-23 13:54:32.325 [main] DEBUG nextflow.util.ThreadPoolBuilder - Creating thread pool 'FileTransfer' minSize=10; maxSize=384; workQueue=LinkedBlockingQueue[-1]; allowCoreThreadTimeout=false
+Sep-23 13:54:32.345 [main] DEBUG nextflow.cli.CmdRun - 
+  Version: 25.04.7 build 5955
+  Created: 08-09-2025 13:29 UTC (20:29 ICST)
+  System: Linux 5.15.0-1086-nvidia
+  Runtime: Groovy 4.0.26 on OpenJDK 64-Bit Server VM 17.0.10+7
+  Encoding: UTF-8 (UTF-8)
+  Process: 3818406@cdcadmin [127.0.1.1]
+  CPUs: 128 - Mem: 503.7 GB (165.5 GB) - Swap: 8 GB (7.9 GB)
+Sep-23 13:54:32.370 [main] DEBUG nextflow.Session - Work-dir: /home/cdcadmin/Downloads/frameshift-check/work [ext2/ext3]
+Sep-23 13:54:32.370 [main] DEBUG nextflow.Session - Script base path does not exist or is not a directory: /home/cdcadmin/Downloads/frameshift-check/bin
+Sep-23 13:54:32.379 [main] DEBUG nextflow.executor.ExecutorFactory - Extension executors providers=[]
+Sep-23 13:54:32.388 [main] DEBUG nextflow.Session - Observer factory: DefaultObserverFactory
+Sep-23 13:54:32.393 [main] DEBUG nextflow.Session - Observer factory (v2): LinObserverFactory
+Sep-23 13:54:32.419 [main] DEBUG nextflow.cache.CacheFactory - Using Nextflow cache factory: nextflow.cache.DefaultCacheFactory
+Sep-23 13:54:32.428 [main] DEBUG nextflow.util.CustomThreadPool - Creating default thread pool > poolSize: 129; maxThreads: 1000
+Sep-23 13:54:32.481 [main] DEBUG nextflow.Session - Session start
+Sep-23 13:54:33.024 [main] DEBUG nextflow.script.ScriptRunner - > Launching execution
+Sep-23 13:54:33.132 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:EnsureDeps` matches process EnsureDeps
+Sep-23 13:54:33.138 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: local
+Sep-23 13:54:33.139 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Sep-23 13:54:33.144 [main] DEBUG nextflow.executor.Executor - [warm up] executor > local
+Sep-23 13:54:33.151 [main] DEBUG n.processor.LocalPollingMonitor - Creating local task monitor for executor 'local' > cpus=128; memory=503.7 GB; capacity=128; pollInterval=100ms; dumpInterval=5m
+Sep-23 13:54:33.153 [main] DEBUG n.processor.TaskPollingMonitor - >>> barrier register (monitor: local)
+Sep-23 13:54:33.178 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'EnsureDeps': maxForks=0; fair=false; array=0
+Sep-23 13:54:33.230 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:FilterNextcladeForSample` matches process FilterNextcladeForSample
+Sep-23 13:54:33.236 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: local
+Sep-23 13:54:33.236 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Sep-23 13:54:33.238 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'FilterNextcladeForSample': maxForks=0; fair=false; array=0
+Sep-23 13:54:33.248 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:MapIllumina` matches process MapIllumina
+Sep-23 13:54:33.251 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: local
+Sep-23 13:54:33.251 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Sep-23 13:54:33.252 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'MapIllumina': maxForks=0; fair=false; array=0
+Sep-23 13:54:33.258 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:MapONT` matches process MapONT
+Sep-23 13:54:33.260 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: local
+Sep-23 13:54:33.260 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Sep-23 13:54:33.261 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'MapONT': maxForks=0; fair=false; array=0
+Sep-23 13:54:33.269 [main] DEBUG nextflow.script.ScriptRunner - Parsed script files:
+  Script_b2baf6b1356dd35e: /home/cdcadmin/Downloads/frameshift-check/main.nf
+Sep-23 13:54:33.270 [main] DEBUG nextflow.Session - Session aborted -- Cause: Multi-channel output cannot be applied to operator filter for which argument is already provided
+Sep-23 13:54:33.292 [Task monitor] DEBUG n.processor.TaskPollingMonitor - <<< barrier arrives (monitor: local) - terminating tasks monitor poll loop
+Sep-23 13:54:33.292 [main] ERROR nextflow.cli.Launcher - Multi-channel output cannot be applied to operator filter for which argument is already provided
+nextflow.exception.ScriptRuntimeException: Multi-channel output cannot be applied to operator filter for which argument is already provided
+	at nextflow.extension.OpCall.setSource(OpCall.groovy:81)
+	at nextflow.extension.OpCall.setSource(OpCall.groovy:90)
+	at nextflow.extension.OpCall.<init>(OpCall.groovy:55)
+	at nextflow.plugin.extension.PluginExtensionProvider.invokeExtensionMethod(PluginExtensionProvider.groovy:280)
+	at groovy.runtime.metaclass.NextflowDelegatingMetaClass.invokeMethod(NextflowDelegatingMetaClass.java:58)
+	at org.codehaus.groovy.vmplugin.v8.IndyInterface.fromCache(IndyInterface.java:321)
+	at Script_b2baf6b1356dd35e$_runScript_closure10$_closure23.doCall(Script_b2baf6b1356dd35e:375)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.codehaus.groovy.reflection.CachedMethod.invoke(CachedMethod.java:343)
+	at groovy.lang.MetaMethod.doMethodInvoke(MetaMethod.java:328)
+	at org.codehaus.groovy.runtime.metaclass.ClosureMetaClass.invokeMethod(ClosureMetaClass.java:280)
+	at groovy.lang.MetaClassImpl.invokeMethod(MetaClassImpl.java:1007)
+	at groovy.lang.Closure.call(Closure.java:433)
+	at groovy.lang.Closure.call(Closure.java:412)
+	at nextflow.script.WorkflowDef.run0(WorkflowDef.groovy:205)
+	at nextflow.script.WorkflowDef.run(WorkflowDef.groovy:189)
+	at nextflow.script.BindableDef.invoke_a(BindableDef.groovy:51)
+	at org.codehaus.groovy.vmplugin.v8.IndyInterface.fromCache(IndyInterface.java:321)
+	at nextflow.script.BaseScript.run0(BaseScript.groovy:182)
+	at org.codehaus.groovy.vmplugin.v8.IndyInterface.fromCache(IndyInterface.java:321)
+	at nextflow.script.BaseScript.run(BaseScript.groovy:193)
+	at nextflow.script.parser.v1.ScriptLoaderV1.runScript(ScriptLoaderV1.groovy:246)
+	at nextflow.script.parser.v1.ScriptLoaderV1.runScript(ScriptLoaderV1.groovy)
+	at nextflow.script.ScriptRunner.run(ScriptRunner.groovy:246)
+	at nextflow.script.ScriptRunner.execute(ScriptRunner.groovy:139)
+	at nextflow.cli.CmdRun.run(CmdRun.groovy:379)
+	at nextflow.cli.Launcher.run(Launcher.groovy:513)
+	at nextflow.cli.Launcher.main(Launcher.groovy:673)

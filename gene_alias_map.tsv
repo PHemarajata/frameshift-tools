@@ -1,0 +1,7 @@
+# Gene alias map (optional)
+# Columns: ncbi_name<TAB>nextclade_name
+# Fill in pairs to harmonize names between NCBI GFF3 and Nextclade json.
+# Example (fictional):
+# D1L	D1L
+# G2R	MPXV-G2R
+# MPXVgp005	5L
