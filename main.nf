@@ -145,12 +145,13 @@ PY
       output:
         path "aln.ilmn.bam"
         path "aln.ilmn.bam.bai"
-      '''
+      script:
+      """
       set -euo pipefail
-bwa-mem2 index ${fasta} || true
+      bwa-mem2 index ${fasta} || true
       bwa-mem2 mem -t 32 ${fasta} ${r1} ${r2} | samtools sort -@8 -o aln.ilmn.bam
       samtools index aln.ilmn.bam
-      '''
+      """
     }
 
     process MapONT {
@@ -163,12 +164,12 @@ bwa-mem2 index ${fasta} || true
       output:
         path "aln.ont.bam"
         path "aln.ont.bam.bai"
-      '''
+      script:
+      """
       set -euo pipefail
-      minimap2 -d ref.mmi ${fasta} || true
-      minimap2 -t 32 -x map-ont ref.mmi ${fq} | samtools sort -@8 -o aln.ont.bam
+      minimap2 -t 32 -ax map-ont ${fasta} ${fq} | samtools sort -@8 -o aln.ont.bam
       samtools index aln.ont.bam
-      '''
+      """
     }
 
     // -------- Variant calling --------
