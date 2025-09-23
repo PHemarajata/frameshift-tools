@@ -1,298 +1,187 @@
-Sep-23 15:44:35.287 [main] DEBUG nextflow.cli.Launcher - $> nextflow run main.nf -profile conda,docker --sample BIDI_mpox_case2_hybrid_APHLproject_work_20250923_103207_DQ011155.1 --nextclade_json nextclade.json --consensus /home/cdcadmin/BIDI_mpox_tree/BIDI_mpox_case2_hybrid_final.fa --gff sequence.gff3 --ilmn_r1 /home/cdcadmin/APHL_Project/BIDI_mpox_case2_hybrid_work_20250923_103207/mpxv_case2_250000111_S5_L001_R1_001.fastq.gz --ilmn_r2 /home/cdcadmin/APHL_Project/BIDI_mpox_case2_hybrid_work_20250923_103207/mpxv_case2_250000111_S5_L001_R2_001.fastq.gz --ont_fq /home/cdcadmin/APHL_Project/BIDI_mpox_case2_hybrid_work_20250923_103207/SImpxv_case2_nanopore.fastq.gz -resume
-Sep-23 15:44:35.376 [main] DEBUG nextflow.cli.CmdRun - N E X T F L O W  ~  version 25.04.7
-Sep-23 15:44:35.399 [main] DEBUG nextflow.plugin.PluginsFacade - Setting up plugin manager > mode=prod; embedded=false; plugins-dir=/home/cdcadmin/.nextflow/plugins; core-plugins: nf-amazon@2.15.0-patch1,nf-azure@1.16.0-patch1,nf-cloudcache@0.4.3,nf-codecommit@0.2.3,nf-console@1.2.1,nf-google@1.21.1,nf-k8s@1.0.0,nf-tower@1.11.4-patch1,nf-wave@1.12.1
-Sep-23 15:44:35.420 [main] INFO  o.pf4j.DefaultPluginStatusProvider - Enabled plugins: []
-Sep-23 15:44:35.421 [main] INFO  o.pf4j.DefaultPluginStatusProvider - Disabled plugins: []
-Sep-23 15:44:35.424 [main] INFO  org.pf4j.DefaultPluginManager - PF4J version 3.12.0 in 'deployment' mode
-Sep-23 15:44:35.434 [main] INFO  org.pf4j.AbstractPluginManager - No plugins
-Sep-23 15:44:35.469 [main] DEBUG nextflow.config.ConfigBuilder - Found config local: /home/cdcadmin/Downloads/frameshift-check/nextflow.config
-Sep-23 15:44:35.472 [main] DEBUG nextflow.config.ConfigBuilder - Parsing config file: /home/cdcadmin/Downloads/frameshift-check/nextflow.config
-Sep-23 15:44:35.502 [main] DEBUG n.secret.LocalSecretsProvider - Secrets store: /home/cdcadmin/.nextflow/secrets/store.json
-Sep-23 15:44:35.506 [main] DEBUG nextflow.secret.SecretsLoader - Discovered secrets providers: [nextflow.secret.LocalSecretsProvider@1f12e153] - activable => nextflow.secret.LocalSecretsProvider@1f12e153
-Sep-23 15:44:35.520 [main] DEBUG nextflow.config.ConfigBuilder - Applying config profile: `conda,docker`
-Sep-23 15:44:36.017 [main] DEBUG nextflow.config.ConfigBuilder - Available config profiles: [conda, docker]
-Sep-23 15:44:36.063 [main] DEBUG nextflow.cli.CmdRun - Applied DSL=2 from script declaration
-Sep-23 15:44:36.081 [main] DEBUG nextflow.cli.CmdRun - Launching `main.nf` [lethal_planck] DSL2 - revision: 9f5611b581
-Sep-23 15:44:36.082 [main] DEBUG nextflow.plugin.PluginsFacade - Plugins default=[]
-Sep-23 15:44:36.082 [main] DEBUG nextflow.plugin.PluginsFacade - Plugins resolved requirement=[]
-Sep-23 15:44:36.133 [main] DEBUG nextflow.Session - Session UUID: d30461a0-8127-4654-851b-94a76fea6b72
-Sep-23 15:44:36.134 [main] DEBUG nextflow.Session - Run name: lethal_planck
-Sep-23 15:44:36.134 [main] DEBUG nextflow.Session - Executor pool size: 128
-Sep-23 15:44:36.142 [main] DEBUG nextflow.file.FilePorter - File porter settings maxRetries=3; maxTransfers=50; pollTimeout=null
-Sep-23 15:44:36.148 [main] DEBUG nextflow.util.ThreadPoolBuilder - Creating thread pool 'FileTransfer' minSize=10; maxSize=384; workQueue=LinkedBlockingQueue[-1]; allowCoreThreadTimeout=false
-Sep-23 15:44:36.166 [main] DEBUG nextflow.cli.CmdRun - 
-  Version: 25.04.7 build 5955
-  Created: 08-09-2025 13:29 UTC (20:29 ICST)
-  System: Linux 5.15.0-1086-nvidia
-  Runtime: Groovy 4.0.26 on OpenJDK 64-Bit Server VM 17.0.10+7
+Sep-23 20:20:04.196 [main] DEBUG nextflow.cli.Launcher - $> nextflow run main.nf -profile docker --sample BIDI_mpox_case2_hybrid_APHLproject_work_20250923_103207_DQ011155.1 --nextclade_json nextclade.json --consensus BIDI_mpox_case2_hybrid_final.fa --gff sequence.gff3 --ilmn_r1 mpxv_case2_250000111_S5_L001_R1_001.fastq --ilmn_r2 mpxv_case2_250000111_S5_L001_R2_001.fastq --ont_fq SImpxv_case2_nanopore.fastq.gz
+Sep-23 20:20:04.259 [main] DEBUG nextflow.cli.CmdRun - N E X T F L O W  ~  version 25.04.6
+Sep-23 20:20:04.273 [main] DEBUG nextflow.plugin.PluginsFacade - Setting up plugin manager > mode=prod; embedded=false; plugins-dir=/home/phemarajata/.nextflow/plugins; core-plugins: nf-amazon@2.15.0,nf-azure@1.16.0,nf-cloudcache@0.4.3,nf-codecommit@0.2.3,nf-console@1.2.1,nf-google@1.21.1,nf-k8s@1.0.0,nf-tower@1.11.4,nf-wave@1.12.1
+Sep-23 20:20:04.290 [main] INFO  o.pf4j.DefaultPluginStatusProvider - Enabled plugins: []
+Sep-23 20:20:04.290 [main] INFO  o.pf4j.DefaultPluginStatusProvider - Disabled plugins: []
+Sep-23 20:20:04.292 [main] INFO  org.pf4j.DefaultPluginManager - PF4J version 3.12.0 in 'deployment' mode
+Sep-23 20:20:04.299 [main] INFO  org.pf4j.AbstractPluginManager - No plugins
+Sep-23 20:20:04.311 [main] DEBUG nextflow.config.ConfigBuilder - Found config local: /home/phemarajata/Downloads/frameshift-tools/nextflow.config
+Sep-23 20:20:04.313 [main] DEBUG nextflow.config.ConfigBuilder - Parsing config file: /home/phemarajata/Downloads/frameshift-tools/nextflow.config
+Sep-23 20:20:04.332 [main] DEBUG n.secret.LocalSecretsProvider - Secrets store: /home/phemarajata/.nextflow/secrets/store.json
+Sep-23 20:20:04.335 [main] DEBUG nextflow.secret.SecretsLoader - Discovered secrets providers: [nextflow.secret.LocalSecretsProvider@c68a5f8] - activable => nextflow.secret.LocalSecretsProvider@c68a5f8
+Sep-23 20:20:04.344 [main] DEBUG nextflow.config.ConfigBuilder - Applying config profile: `docker`
+Sep-23 20:20:04.661 [main] DEBUG nextflow.config.ConfigBuilder - Available config profiles: [docker]
+Sep-23 20:20:04.686 [main] DEBUG nextflow.cli.CmdRun - Applied DSL=2 from script declaration
+Sep-23 20:20:04.703 [main] DEBUG nextflow.cli.CmdRun - Launching `main.nf` [loquacious_lamarck] DSL2 - revision: 9f5611b581
+Sep-23 20:20:04.705 [main] DEBUG nextflow.plugin.PluginsFacade - Plugins default=[]
+Sep-23 20:20:04.705 [main] DEBUG nextflow.plugin.PluginsFacade - Plugins resolved requirement=[]
+Sep-23 20:20:04.742 [main] DEBUG nextflow.Session - Session UUID: bca6e1af-ef68-4259-ac60-39f9f7bba988
+Sep-23 20:20:04.743 [main] DEBUG nextflow.Session - Run name: loquacious_lamarck
+Sep-23 20:20:04.743 [main] DEBUG nextflow.Session - Executor pool size: 22
+Sep-23 20:20:04.748 [main] DEBUG nextflow.file.FilePorter - File porter settings maxRetries=3; maxTransfers=50; pollTimeout=null
+Sep-23 20:20:04.752 [main] DEBUG nextflow.util.ThreadPoolBuilder - Creating thread pool 'FileTransfer' minSize=10; maxSize=66; workQueue=LinkedBlockingQueue[-1]; allowCoreThreadTimeout=false
+Sep-23 20:20:04.770 [main] DEBUG nextflow.cli.CmdRun - 
+  Version: 25.04.6 build 5954
+  Created: 01-07-2025 11:27 UTC (18:27 ICST)
+  System: Linux 6.14.0-29-generic
+  Runtime: Groovy 4.0.26 on Java HotSpot(TM) 64-Bit Server VM 17.0.12+8-LTS-286
   Encoding: UTF-8 (UTF-8)
-  Process: 4062643@cdcadmin [127.0.1.1]
-  CPUs: 128 - Mem: 503.7 GB (158.6 GB) - Swap: 8 GB (7.9 GB)
-Sep-23 15:44:36.198 [main] DEBUG nextflow.Session - Work-dir: /home/cdcadmin/Downloads/frameshift-check/work [ext2/ext3]
-Sep-23 15:44:36.199 [main] DEBUG nextflow.Session - Script base path does not exist or is not a directory: /home/cdcadmin/Downloads/frameshift-check/bin
-Sep-23 15:44:36.208 [main] DEBUG nextflow.executor.ExecutorFactory - Extension executors providers=[]
-Sep-23 15:44:36.217 [main] DEBUG nextflow.Session - Observer factory: DefaultObserverFactory
-Sep-23 15:44:36.224 [main] DEBUG nextflow.Session - Observer factory (v2): LinObserverFactory
-Sep-23 15:44:36.251 [main] DEBUG nextflow.cache.CacheFactory - Using Nextflow cache factory: nextflow.cache.DefaultCacheFactory
-Sep-23 15:44:36.260 [main] DEBUG nextflow.util.CustomThreadPool - Creating default thread pool > poolSize: 129; maxThreads: 1000
-Sep-23 15:44:36.325 [main] DEBUG nextflow.Session - Session start
-Sep-23 15:44:36.923 [main] DEBUG nextflow.script.ScriptRunner - > Launching execution
-Sep-23 15:44:37.027 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:EnsureDeps` matches process EnsureDeps
-Sep-23 15:44:37.029 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:.*` matches process EnsureDeps
-Sep-23 15:44:37.034 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: local
-Sep-23 15:44:37.034 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
-Sep-23 15:44:37.040 [main] DEBUG nextflow.executor.Executor - [warm up] executor > local
-Sep-23 15:44:37.046 [main] DEBUG n.processor.LocalPollingMonitor - Creating local task monitor for executor 'local' > cpus=128; memory=503.7 GB; capacity=128; pollInterval=100ms; dumpInterval=5m
-Sep-23 15:44:37.049 [main] DEBUG n.processor.TaskPollingMonitor - >>> barrier register (monitor: local)
-Sep-23 15:44:37.076 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'EnsureDeps': maxForks=0; fair=false; array=0
-Sep-23 15:44:37.134 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:FilterNextcladeForSample` matches process FilterNextcladeForSample
-Sep-23 15:44:37.135 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:.*` matches process FilterNextcladeForSample
-Sep-23 15:44:37.140 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: local
-Sep-23 15:44:37.140 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
-Sep-23 15:44:37.142 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'FilterNextcladeForSample': maxForks=0; fair=false; array=0
-Sep-23 15:44:37.154 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:MapIllumina` matches process MapIllumina
-Sep-23 15:44:37.154 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:.*` matches process MapIllumina
-Sep-23 15:44:37.156 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: local
-Sep-23 15:44:37.156 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
-Sep-23 15:44:37.158 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'MapIllumina': maxForks=0; fair=false; array=0
-Sep-23 15:44:37.163 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:CallIllumina` matches process CallIllumina
-Sep-23 15:44:37.163 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:.*` matches process CallIllumina
-Sep-23 15:44:37.164 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: local
-Sep-23 15:44:37.165 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
-Sep-23 15:44:37.166 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'CallIllumina': maxForks=0; fair=false; array=0
-Sep-23 15:44:37.173 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:MapONT` matches process MapONT
-Sep-23 15:44:37.173 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:.*` matches process MapONT
-Sep-23 15:44:37.174 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: local
-Sep-23 15:44:37.175 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
-Sep-23 15:44:37.175 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'MapONT': maxForks=0; fair=false; array=0
-Sep-23 15:44:37.181 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:CallONT` matches process CallONT
-Sep-23 15:44:37.181 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:.*` matches process CallONT
-Sep-23 15:44:37.182 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: local
-Sep-23 15:44:37.182 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
-Sep-23 15:44:37.183 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'CallONT': maxForks=0; fair=false; array=0
-Sep-23 15:44:37.187 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:MakeCdsBed` matches process MakeCdsBed
-Sep-23 15:44:37.188 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:.*` matches process MakeCdsBed
-Sep-23 15:44:37.189 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: local
-Sep-23 15:44:37.189 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
-Sep-23 15:44:37.190 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'MakeCdsBed': maxForks=0; fair=false; array=0
-Sep-23 15:44:37.215 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:IndelsToBeds` matches process IndelsToBeds
-Sep-23 15:44:37.216 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:.*` matches process IndelsToBeds
-Sep-23 15:44:37.217 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: local
-Sep-23 15:44:37.217 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
-Sep-23 15:44:37.218 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'IndelsToBeds': maxForks=0; fair=false; array=0
-Sep-23 15:44:37.227 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:VerifyFrameshifts` matches process VerifyFrameshifts
-Sep-23 15:44:37.227 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:.*` matches process VerifyFrameshifts
-Sep-23 15:44:37.229 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: local
-Sep-23 15:44:37.229 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
-Sep-23 15:44:37.230 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'VerifyFrameshifts': maxForks=0; fair=false; array=0
-Sep-23 15:44:37.236 [main] DEBUG nextflow.Session - Workflow process names [dsl2]: IndelsToBeds, MapIllumina, FilterNextcladeForSample, EnsureDeps, MapONT, VerifyFrameshifts, CallONT, MakeCdsBed, CallIllumina
-Sep-23 15:44:37.240 [main] DEBUG nextflow.Session - Igniting dataflow network (16)
-Sep-23 15:44:37.246 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > EnsureDeps
-Sep-23 15:44:37.246 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > FilterNextcladeForSample
-Sep-23 15:44:37.246 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > MapIllumina
-Sep-23 15:44:37.247 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > CallIllumina
-Sep-23 15:44:37.247 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > MapONT
-Sep-23 15:44:37.248 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > CallONT
-Sep-23 15:44:37.248 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > MakeCdsBed
-Sep-23 15:44:37.248 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > IndelsToBeds
-Sep-23 15:44:37.249 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > VerifyFrameshifts
-Sep-23 15:44:37.249 [main] DEBUG nextflow.script.ScriptRunner - Parsed script files:
-  Script_f2acd48f7e0aaecf: /home/cdcadmin/Downloads/frameshift-check/main.nf
-Sep-23 15:44:37.249 [main] DEBUG nextflow.script.ScriptRunner - > Awaiting termination 
-Sep-23 15:44:37.249 [main] DEBUG nextflow.Session - Session await
-Sep-23 15:44:37.317 [Actor Thread 28] INFO  nextflow.conda.CondaCache - Creating env using conda: bioconda::bwa-mem2 bioconda::samtools [cache /home/cdcadmin/Downloads/frameshift-check/work/conda/env-a6393410ce791dc60d6642bd2fcb7b50]
-Sep-23 15:44:37.317 [Actor Thread 29] INFO  nextflow.conda.CondaCache - Creating env using conda: bioconda::jq bioconda::samtools bioconda::bwa-mem2 bioconda::minimap2 bioconda::freebayes bioconda::bcftools bioconda::bedtools [cache /home/cdcadmin/Downloads/frameshift-check/work/conda/env-52a38378ac3ddf61bff69377258a36ac]
-Sep-23 15:44:37.317 [Actor Thread 27] INFO  nextflow.conda.CondaCache - Creating env using conda: conda-forge::gawk [cache /home/cdcadmin/Downloads/frameshift-check/work/conda/env-403c3157eea31b7d6d79c528ada0525b]
-Sep-23 15:44:37.317 [Actor Thread 30] INFO  nextflow.conda.CondaCache - Creating env using conda: bioconda::minimap2 bioconda::samtools [cache /home/cdcadmin/Downloads/frameshift-check/work/conda/env-1534ab87f70faa7f65260c98ce9c4f42]
-Sep-23 15:44:37.322 [Actor Thread 31] INFO  nextflow.conda.CondaCache - Creating env using conda: bioconda::jq [cache /home/cdcadmin/Downloads/frameshift-check/work/conda/env-06ac42b8979b0d7379352b54923b10ea]
-Sep-23 15:45:58.747 [Actor Thread 27] DEBUG nextflow.conda.CondaCache - 'conda' create complete env=conda-forge::gawk path=/home/cdcadmin/Downloads/frameshift-check/work/conda/env-403c3157eea31b7d6d79c528ada0525b
-Sep-23 15:45:58.817 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
-Sep-23 15:45:58.818 [Task submitter] INFO  nextflow.Session - [c1/ef2ba5] Submitted process > MakeCdsBed (gff_to_bed)
-Sep-23 15:46:04.643 [Actor Thread 19] DEBUG nextflow.processor.TaskProcessor - Handling unexpected condition for
-  task: name=FilterNextcladeForSample (1); work-dir=null
-  error [java.lang.IllegalStateException]: java.lang.IllegalStateException: Failed to create Conda environment
-  command: conda create --yes --quiet --prefix /home/cdcadmin/Downloads/frameshift-check/work/conda/env-06ac42b8979b0d7379352b54923b10ea bioconda::jq
-  status : 1
-  message:
-    Channels:
-     - conda-forge
-     - bioconda
-     - defaults
-    Platform: linux-64
-    Collecting package metadata (repodata.json): ...working... done
-    Solving environment: ...working... failed
-    
-    LibMambaUnsatisfiableError: Encountered problems while solving:
-      - package jq-1.5-0 is excluded by strict repo priority
-
-Sep-23 15:46:04.649 [Actor Thread 19] ERROR nextflow.processor.TaskProcessor - Error executing process > 'FilterNextcladeForSample (1)'
+  Process: 136649@phemarajata-Stealth-16-MercedesAMG-A1VGG [127.0.1.1]
+  CPUs: 22 - Mem: 62.3 GB (14.2 GB) - Swap: 8 GB (8 GB)
+Sep-23 20:20:04.788 [main] DEBUG nextflow.Session - Work-dir: /home/phemarajata/Downloads/frameshift-tools/work [ext2/ext3]
+Sep-23 20:20:04.789 [main] DEBUG nextflow.Session - Script base path does not exist or is not a directory: /home/phemarajata/Downloads/frameshift-tools/bin
+Sep-23 20:20:04.798 [main] DEBUG nextflow.executor.ExecutorFactory - Extension executors providers=[]
+Sep-23 20:20:04.810 [main] DEBUG nextflow.Session - Observer factory: DefaultObserverFactory
+Sep-23 20:20:04.815 [main] DEBUG nextflow.Session - Observer factory (v2): LinObserverFactory
+Sep-23 20:20:04.835 [main] DEBUG nextflow.cache.CacheFactory - Using Nextflow cache factory: nextflow.cache.DefaultCacheFactory
+Sep-23 20:20:04.842 [main] DEBUG nextflow.util.CustomThreadPool - Creating default thread pool > poolSize: 23; maxThreads: 1000
+Sep-23 20:20:04.889 [main] DEBUG nextflow.Session - Session start
+Sep-23 20:20:05.309 [main] DEBUG nextflow.script.ScriptRunner - > Launching execution
+Sep-23 20:20:05.396 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: local
+Sep-23 20:20:05.396 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Sep-23 20:20:05.400 [main] DEBUG nextflow.executor.Executor - [warm up] executor > local
+Sep-23 20:20:05.403 [main] DEBUG n.processor.LocalPollingMonitor - Creating local task monitor for executor 'local' > cpus=22; memory=62.3 GB; capacity=22; pollInterval=100ms; dumpInterval=5m
+Sep-23 20:20:05.408 [main] DEBUG n.processor.TaskPollingMonitor - >>> barrier register (monitor: local)
+Sep-23 20:20:05.433 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'EnsureDeps': maxForks=0; fair=false; array=0
+Sep-23 20:20:05.508 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: local
+Sep-23 20:20:05.508 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Sep-23 20:20:05.509 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'FilterNextcladeForSample': maxForks=0; fair=false; array=0
+Sep-23 20:20:05.525 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: local
+Sep-23 20:20:05.525 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Sep-23 20:20:05.526 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'MapIllumina': maxForks=0; fair=false; array=0
+Sep-23 20:20:05.534 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: local
+Sep-23 20:20:05.534 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Sep-23 20:20:05.535 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'CallIllumina': maxForks=0; fair=false; array=0
+Sep-23 20:20:05.542 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: local
+Sep-23 20:20:05.542 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Sep-23 20:20:05.543 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'MapONT': maxForks=0; fair=false; array=0
+Sep-23 20:20:05.548 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:CallONT` matches process CallONT
+Sep-23 20:20:05.549 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: local
+Sep-23 20:20:05.549 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Sep-23 20:20:05.550 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'CallONT': maxForks=0; fair=false; array=0
+Sep-23 20:20:05.554 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: local
+Sep-23 20:20:05.555 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Sep-23 20:20:05.555 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'MakeCdsBed': maxForks=0; fair=false; array=0
+Sep-23 20:20:05.577 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: local
+Sep-23 20:20:05.577 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Sep-23 20:20:05.579 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'IndelsToBeds': maxForks=0; fair=false; array=0
+Sep-23 20:20:05.588 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: local
+Sep-23 20:20:05.588 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Sep-23 20:20:05.589 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'VerifyFrameshifts': maxForks=0; fair=false; array=0
+Sep-23 20:20:05.593 [main] DEBUG nextflow.Session - Workflow process names [dsl2]: IndelsToBeds, MapIllumina, FilterNextcladeForSample, EnsureDeps, MapONT, VerifyFrameshifts, CallONT, MakeCdsBed, CallIllumina
+Sep-23 20:20:05.595 [main] DEBUG nextflow.Session - Igniting dataflow network (16)
+Sep-23 20:20:05.600 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > EnsureDeps
+Sep-23 20:20:05.600 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > FilterNextcladeForSample
+Sep-23 20:20:05.601 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > MapIllumina
+Sep-23 20:20:05.601 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > CallIllumina
+Sep-23 20:20:05.601 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > MapONT
+Sep-23 20:20:05.601 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > CallONT
+Sep-23 20:20:05.601 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > MakeCdsBed
+Sep-23 20:20:05.601 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > IndelsToBeds
+Sep-23 20:20:05.602 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > VerifyFrameshifts
+Sep-23 20:20:05.602 [main] DEBUG nextflow.script.ScriptRunner - Parsed script files:
+  Script_f2acd48f7e0aaecf: /home/phemarajata/Downloads/frameshift-tools/main.nf
+Sep-23 20:20:05.602 [main] DEBUG nextflow.script.ScriptRunner - > Awaiting termination 
+Sep-23 20:20:05.602 [main] DEBUG nextflow.Session - Session await
+Sep-23 20:20:05.647 [Actor Thread 17] DEBUG nextflow.util.HashBuilder - Unable to get file attributes file: /home/phemarajata/Downloads/frameshift-tools/mpxv_case2_250000111_S5_L001_R1_001.fastq -- Cause: java.nio.file.NoSuchFileException: /home/phemarajata/Downloads/frameshift-tools/mpxv_case2_250000111_S5_L001_R1_001.fastq
+Sep-23 20:20:05.648 [Actor Thread 17] DEBUG nextflow.util.HashBuilder - Unable to get file attributes file: /home/phemarajata/Downloads/frameshift-tools/mpxv_case2_250000111_S5_L001_R2_001.fastq -- Cause: java.nio.file.NoSuchFileException: /home/phemarajata/Downloads/frameshift-tools/mpxv_case2_250000111_S5_L001_R2_001.fastq
+Sep-23 20:20:05.692 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Sep-23 20:20:05.693 [Task submitter] INFO  nextflow.Session - [26/a43a45] Submitted process > EnsureDeps (check_deps)
+Sep-23 20:20:05.702 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Sep-23 20:20:05.703 [Task submitter] INFO  nextflow.Session - [19/0d51f1] Submitted process > MapIllumina (map_illumina)
+Sep-23 20:20:05.707 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Sep-23 20:20:05.707 [Task submitter] INFO  nextflow.Session - [fb/750639] Submitted process > MapONT (map_ont)
+Sep-23 20:20:05.713 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Sep-23 20:20:05.714 [Task submitter] INFO  nextflow.Session - [b5/e67778] Submitted process > MakeCdsBed (gff_to_bed)
+Sep-23 20:20:05.714 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 3; name: EnsureDeps (check_deps); status: COMPLETED; exit: 0; error: -; workDir: /home/phemarajata/Downloads/frameshift-tools/work/26/a43a4504bf2e71824055a84a5fe735]
+Sep-23 20:20:05.715 [Task monitor] DEBUG nextflow.util.ThreadPoolBuilder - Creating thread pool 'TaskFinalizer' minSize=10; maxSize=66; workQueue=LinkedBlockingQueue[-1]; allowCoreThreadTimeout=false
+Sep-23 20:20:05.720 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Sep-23 20:20:05.721 [Task submitter] INFO  nextflow.Session - [1a/1a4467] Submitted process > FilterNextcladeForSample (BIDI_mpox_case2_hybrid_APHLproject_work_20250923_103207_DQ011155.1)
+Sep-23 20:20:05.725 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 2; name: MakeCdsBed (gff_to_bed); status: COMPLETED; exit: 0; error: -; workDir: /home/phemarajata/Downloads/frameshift-tools/work/b5/e677781ab88e9d59092c2dbecf6e1b]
+Sep-23 20:20:05.934 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 4; name: FilterNextcladeForSample (BIDI_mpox_case2_hybrid_APHLproject_work_20250923_103207_DQ011155.1); status: COMPLETED; exit: 0; error: -; workDir: /home/phemarajata/Downloads/frameshift-tools/work/1a/1a44670db7f6602003b8f4dcc2b586]
+Sep-23 20:20:08.871 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 5; name: MapIllumina (map_illumina); status: COMPLETED; exit: 1; error: -; workDir: /home/phemarajata/Downloads/frameshift-tools/work/19/0d51f17887cf4f0c4cf78d763dbbc0]
+Sep-23 20:20:08.876 [TaskFinalizer-4] DEBUG nextflow.processor.TaskProcessor - Handling unexpected condition for
+  task: name=MapIllumina (map_illumina); work-dir=/home/phemarajata/Downloads/frameshift-tools/work/19/0d51f17887cf4f0c4cf78d763dbbc0
+  error [nextflow.exception.ProcessFailedException]: Process `MapIllumina (map_illumina)` terminated with an error exit status (1)
+Sep-23 20:20:08.885 [TaskFinalizer-4] ERROR nextflow.processor.TaskProcessor - Error executing process > 'MapIllumina (map_illumina)'
 
 Caused by:
-  Failed to create Conda environment
-    command: conda create --yes --quiet --prefix /home/cdcadmin/Downloads/frameshift-check/work/conda/env-06ac42b8979b0d7379352b54923b10ea bioconda::jq
-    status : 1
-    message:
-      Channels:
-       - conda-forge
-       - bioconda
-       - defaults
-      Platform: linux-64
-      Collecting package metadata (repodata.json): ...working... done
-      Solving environment: ...working... failed
-      
-      LibMambaUnsatisfiableError: Encountered problems while solving:
-        - package jq-1.5-0 is excluded by strict repo priority
+  Process `MapIllumina (map_illumina)` terminated with an error exit status (1)
 
 
-java.lang.IllegalStateException: java.lang.IllegalStateException: Failed to create Conda environment
-  command: conda create --yes --quiet --prefix /home/cdcadmin/Downloads/frameshift-check/work/conda/env-06ac42b8979b0d7379352b54923b10ea bioconda::jq
-  status : 1
-  message:
-    Channels:
-     - conda-forge
-     - bioconda
-     - defaults
-    Platform: linux-64
-    Collecting package metadata (repodata.json): ...working... done
-    Solving environment: ...working... failed
-    
-    LibMambaUnsatisfiableError: Encountered problems while solving:
-      - package jq-1.5-0 is excluded by strict repo priority
+Command executed:
 
-	at nextflow.conda.CondaCache.getCachePathFor(CondaCache.groovy:393)
-	at org.codehaus.groovy.vmplugin.v8.IndyInterface.fromCache(IndyInterface.java:321)
-	at nextflow.processor.TaskRun.getCondaEnv0(TaskRun.groovy:647)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
-	at org.codehaus.groovy.reflection.CachedMethod.invoke(CachedMethod.java:343)
-	at groovy.lang.MetaMethod.doMethodInvoke(MetaMethod.java:328)
-	at groovy.lang.MetaClassImpl.doInvokeMethod(MetaClassImpl.java:1333)
-	at groovy.lang.MetaClassImpl.invokeMethod(MetaClassImpl.java:1088)
-	at org.codehaus.groovy.runtime.ScriptBytecodeAdapter.invokeMethodOnCurrentN(ScriptBytecodeAdapter.java:96)
-	at nextflow.processor.TaskRun.this$dist$invoke$1(TaskRun.groovy)
-	at nextflow.processor.TaskRun$2.methodMissing(TaskRun.groovy)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
-	at org.codehaus.groovy.reflection.CachedMethod.invoke(CachedMethod.java:343)
-	at groovy.lang.MetaClassImpl.invokeMissingMethod(MetaClassImpl.java:924)
-	at groovy.lang.MetaClassImpl.invokePropertyOrMissing(MetaClassImpl.java:1413)
-	at groovy.lang.MetaClassImpl.doInvokeMethod(MetaClassImpl.java:1335)
-	at groovy.lang.MetaClassImpl.invokeMethod(MetaClassImpl.java:1088)
-	at groovy.lang.MetaClassImpl.invokeMethod(MetaClassImpl.java:1007)
-	at org.codehaus.groovy.vmplugin.v8.IndyInterface.fromCache(IndyInterface.java:321)
-	at nextflow.processor.TaskRun$2.apply(TaskRun.groovy:638)
-	at nextflow.processor.TaskRun$2.apply(TaskRun.groovy)
-	at java.base/java.util.concurrent.ConcurrentHashMap.computeIfAbsent(ConcurrentHashMap.java:1708)
-	at org.codehaus.groovy.vmplugin.v8.IndyInterface.fromCache(IndyInterface.java:321)
-	at nextflow.processor.TaskRun.getCondaEnv(TaskRun.groovy:635)
-	at org.codehaus.groovy.vmplugin.v8.IndyInterface.fromCache(IndyInterface.java:321)
-	at nextflow.processor.TaskProcessor.createTaskHashKey(TaskProcessor.groovy:2232)
-	at org.codehaus.groovy.vmplugin.v8.IndyInterface.fromCache(IndyInterface.java:321)
-	at nextflow.processor.TaskProcessor.invokeTask(TaskProcessor.groovy:656)
-	at nextflow.processor.InvokeTaskAdapter.call(InvokeTaskAdapter.groovy:52)
-	at groovyx.gpars.dataflow.operator.DataflowOperatorActor.startTask(DataflowOperatorActor.java:120)
-	at groovyx.gpars.dataflow.operator.ForkingDataflowOperatorActor.access$001(ForkingDataflowOperatorActor.java:35)
-	at groovyx.gpars.dataflow.operator.ForkingDataflowOperatorActor$1.run(ForkingDataflowOperatorActor.java:58)
-	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
-	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
-	at java.base/java.lang.Thread.run(Thread.java:840)
-Caused by: java.lang.IllegalStateException: Failed to create Conda environment
-  command: conda create --yes --quiet --prefix /home/cdcadmin/Downloads/frameshift-check/work/conda/env-06ac42b8979b0d7379352b54923b10ea bioconda::jq
-  status : 1
-  message:
-    Channels:
-     - conda-forge
-     - bioconda
-     - defaults
-    Platform: linux-64
-    Collecting package metadata (repodata.json): ...working... done
-    Solving environment: ...working... failed
-    
-    LibMambaUnsatisfiableError: Encountered problems while solving:
-      - package jq-1.5-0 is excluded by strict repo priority
+  set -euo pipefail
+  bwa-mem2 index BIDI_mpox_case2_hybrid_final.fa || true
+  bwa-mem2 mem -t 32 BIDI_mpox_case2_hybrid_final.fa mpxv_case2_250000111_S5_L001_R1_001.fastq mpxv_case2_250000111_S5_L001_R2_001.fastq | samtools sort -@8 -o aln.ilmn.bam
+  samtools index aln.ilmn.bam
 
-	at nextflow.conda.CondaCache.runCommand(CondaCache.groovy:341)
-	at nextflow.conda.CondaCache.createLocalCondaEnv0(CondaCache.groovy:312)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
-	at org.codehaus.groovy.reflection.CachedMethod.invoke(CachedMethod.java:343)
-	at groovy.lang.MetaMethod.doMethodInvoke(MetaMethod.java:328)
-	at groovy.lang.MetaClassImpl.doInvokeMethod(MetaClassImpl.java:1333)
-	at groovy.lang.MetaClassImpl.invokeMethod(MetaClassImpl.java:1088)
-	at groovy.lang.MetaClassImpl.invokeMethod(MetaClassImpl.java:1007)
-	at org.codehaus.groovy.runtime.InvokerHelper.invokePogoMethod(InvokerHelper.java:645)
-	at org.codehaus.groovy.runtime.InvokerHelper.invokeMethod(InvokerHelper.java:628)
-	at org.codehaus.groovy.runtime.InvokerHelper.invokeMethodSafe(InvokerHelper.java:82)
-	at nextflow.conda.CondaCache$_createLocalCondaEnv_closure1.doCall(CondaCache.groovy:267)
-	at nextflow.conda.CondaCache$_createLocalCondaEnv_closure1.call(CondaCache.groovy)
-	at nextflow.file.FileMutex.lock(FileMutex.groovy:106)
-	at nextflow.conda.CondaCache.createLocalCondaEnv(CondaCache.groovy:267)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
-	at org.codehaus.groovy.reflection.CachedMethod.invoke(CachedMethod.java:343)
-	at groovy.lang.MetaMethod.doMethodInvoke(MetaMethod.java:328)
-	at groovy.lang.MetaClassImpl.doInvokeMethod(MetaClassImpl.java:1333)
-	at groovy.lang.MetaClassImpl.invokeMethod(MetaClassImpl.java:1088)
-	at groovy.lang.MetaClassImpl.invokeMethod(MetaClassImpl.java:1007)
-	at org.codehaus.groovy.runtime.InvokerHelper.invokePogoMethod(InvokerHelper.java:645)
-	at org.codehaus.groovy.runtime.InvokerHelper.invokeMethod(InvokerHelper.java:628)
-	at org.codehaus.groovy.runtime.InvokerHelper.invokeMethodSafe(InvokerHelper.java:82)
-	at nextflow.conda.CondaCache$_getLazyImagePath_closure3.doCall(CondaCache.groovy:370)
-	at nextflow.conda.CondaCache$_getLazyImagePath_closure3.call(CondaCache.groovy)
-	at groovyx.gpars.dataflow.LazyDataflowVariable$1.run(LazyDataflowVariable.java:70)
-	... 3 common frames omitted
-Sep-23 15:46:04.653 [Actor Thread 19] DEBUG nextflow.Session - Session aborted -- Cause: java.lang.IllegalStateException: Failed to create Conda environment
-  command: conda create --yes --quiet --prefix /home/cdcadmin/Downloads/frameshift-check/work/conda/env-06ac42b8979b0d7379352b54923b10ea bioconda::jq
-  status : 1
-  message:
-    Channels:
-     - conda-forge
-     - bioconda
-     - defaults
-    Platform: linux-64
-    Collecting package metadata (repodata.json): ...working... done
-    Solving environment: ...working... failed
-    
-    LibMambaUnsatisfiableError: Encountered problems while solving:
-      - package jq-1.5-0 is excluded by strict repo priority
+Command exit status:
+  1
 
-Sep-23 15:46:04.666 [Actor Thread 19] DEBUG nextflow.Session - The following nodes are still active:
-[process] EnsureDeps
-  status=ACTIVE
-  port 0: (cntrl) -     ; channel: $
+Command output:
+  ref_seq_len = 391342
+  count = 0, 130971, 195671, 260371, 391342
+  BWT[252813] = 4
+  CP_SHIFT = 6, CP_MASK = 63
+  sizeof CP_OCC = 64
+  max_occ_ind = 6114
 
-[process] FilterNextcladeForSample
-  status=ACTIVE
-  port 0: (queue) closed; channel: json
-  port 1: (cntrl) -     ; channel: $
+Command error:
+  Looking to launch executable "/home/phemarajata/bwa-mem2-2.2.1_x64-linux/bwa-mem2.avx2", simd = .avx2
+  Launching executable "/home/phemarajata/bwa-mem2-2.2.1_x64-linux/bwa-mem2.avx2"
+  [bwa_index] Pack FASTA... 0.00 sec
+  * Entering FMI_search
+  init ticks = 16099374
+  ref seq len = 391342
+  binary seq ticks = 5695294
+  build suffix-array ticks = 47819526
+  ref_seq_len = 391342
+  count = 0, 130971, 195671, 260371, 391342
+  BWT[252813] = 4
+  CP_SHIFT = 6, CP_MASK = 63
+  sizeof CP_OCC = 64
+  pos: 48918, ref_seq_len__: 48917
+  build fm-index ticks = 14967452
+  max_occ_ind = 6114
+  Total time taken: 0.0342
+  Looking to launch executable "/home/phemarajata/bwa-mem2-2.2.1_x64-linux/bwa-mem2.avx2", simd = .avx2
+  Launching executable "/home/phemarajata/bwa-mem2-2.2.1_x64-linux/bwa-mem2.avx2"
+  -----------------------------
+  Executing in AVX2 mode!!
+  -----------------------------
+  * SA compression enabled with xfactor: 8
+  * Ref file: BIDI_mpox_case2_hybrid_final.fa
+  * Entering FMI_search
+  * Index file found. Loading index from BIDI_mpox_case2_hybrid_final.fa.bwt.2bit.64
+  * Reference seq len for bi-index = 391343
+  * sentinel-index: 252813
+  * Count:
+  0,	1
+  1,	130972
+  2,	195672
+  3,	260372
+  4,	391343
+  
+  * Reading other elements of the index from files BIDI_mpox_case2_hybrid_final.fa
+  * Index prefix: BIDI_mpox_case2_hybrid_final.fa
+  * Read 0 ALT contigs
+  * Done reading Index!!
+  * Reading reference genome..
+  * Binary seq file = BIDI_mpox_case2_hybrid_final.fa.0123
+  * Reference genome size: 391342 bp
+  * Done reading reference genome !!
+  
+  [E::main_mem] fail to open file `mpxv_case2_250000111_S5_L001_R1_001.fastq'.
+  [W::hts_set_opt] Cannot change block size for this format
+  samtools sort: failed to read header from "-"
 
-[process] MapIllumina
-  status=ACTIVE
-  port 0: (queue) closed; channel: r1
-  port 1: (queue) OPEN  ; channel: r2
-  port 2: (queue) OPEN  ; channel: fasta
-  port 3: (cntrl) -     ; channel: $
+Work dir:
+  /home/phemarajata/Downloads/frameshift-tools/work/19/0d51f17887cf4f0c4cf78d763dbbc0
 
-[process] CallIllumina
-  status=ACTIVE
-  port 0: (queue) OPEN  ; channel: fasta
-  port 1: (queue) OPEN  ; channel: bam
-  port 2: (cntrl) -     ; channel: $
-
-[process] MapONT
-  status=ACTIVE
-  port 0: (queue) closed; channel: fq
-  port 1: (queue) OPEN  ; channel: fasta
-  port 2: (cntrl) -     ; channel: $
-
+Tip: when you have fixed the problem you can continue the execution adding the option `-resume` to the run command line
+Sep-23 20:20:08.887 [TaskFinalizer-4] DEBUG nextflow.Session - Session aborted -- Cause: Process `MapIllumina (map_illumina)` terminated with an error exit status (1)
+Sep-23 20:20:08.895 [TaskFinalizer-4] DEBUG nextflow.Session - The following nodes are still active:
 [process] CallONT
   status=ACTIVE
   port 0: (queue) OPEN  ; channel: fasta
@@ -314,22 +203,10 @@ Sep-23 15:46:04.666 [Actor Thread 19] DEBUG nextflow.Session - The following nod
   port 4: (value) bound ; channel: alias_map_path
   port 5: (cntrl) -     ; channel: $
 
-Sep-23 15:46:04.670 [main] DEBUG nextflow.Session - Session await > all processes finished
-Sep-23 15:46:04.670 [main] DEBUG nextflow.Session - Session await > all barriers passed
-Sep-23 15:46:04.670 [Task monitor] DEBUG n.processor.TaskPollingMonitor - <<< barrier arrives (monitor: local) - terminating tasks monitor poll loop
-Sep-23 15:46:04.671 [Actor Thread 3] DEBUG nextflow.processor.TaskProcessor - Handling unexpected condition for
-  task: name=EnsureDeps; work-dir=null
-  error [java.lang.InterruptedException]: java.lang.InterruptedException
-Sep-23 15:46:04.671 [Actor Thread 5] DEBUG nextflow.processor.TaskProcessor - Handling unexpected condition for
-  task: name=MapIllumina; work-dir=null
-  error [java.lang.InterruptedException]: java.lang.InterruptedException
-Sep-23 15:46:04.671 [Actor Thread 7] DEBUG nextflow.processor.TaskProcessor - Handling unexpected condition for
-  task: name=MapONT; work-dir=null
-  error [java.lang.InterruptedException]: java.lang.InterruptedException
-Sep-23 15:46:04.671 [Actor Thread 4] DEBUG nextflow.processor.TaskProcessor - Handling unexpected condition for
-  task: name=FilterNextcladeForSample; work-dir=null
-  error [java.lang.InterruptedException]: java.lang.InterruptedException
-Sep-23 15:46:04.674 [main] WARN  n.processor.TaskPollingMonitor - Killing running tasks (1)
-Sep-23 15:46:04.684 [main] DEBUG n.trace.WorkflowStatsObserver - Workflow completed > WorkflowStats[succeededCount=0; failedCount=0; ignoredCount=0; cachedCount=0; pendingCount=0; submittedCount=0; runningCount=0; retriesCount=0; abortedCount=1; succeedDuration=0ms; failedDuration=0ms; cachedDuration=0ms;loadCpus=0; loadMemory=0; peakRunning=1; peakCpus=1; peakMemory=0; ]
-Sep-23 15:46:04.865 [main] DEBUG nextflow.cache.CacheDB - Closing CacheDB done
-Sep-23 15:46:04.877 [main] DEBUG nextflow.script.ScriptRunner - > Execution complete -- Goodbye
+Sep-23 20:20:08.898 [main] DEBUG nextflow.Session - Session await > all processes finished
+Sep-23 20:20:08.898 [main] DEBUG nextflow.Session - Session await > all barriers passed
+Sep-23 20:20:08.898 [Task monitor] DEBUG n.processor.TaskPollingMonitor - <<< barrier arrives (monitor: local) - terminating tasks monitor poll loop
+Sep-23 20:20:08.901 [main] WARN  n.processor.TaskPollingMonitor - Killing running tasks (1)
+Sep-23 20:20:08.909 [main] DEBUG n.trace.WorkflowStatsObserver - Workflow completed > WorkflowStats[succeededCount=3; failedCount=1; ignoredCount=0; cachedCount=0; pendingCount=0; submittedCount=0; runningCount=0; retriesCount=0; abortedCount=1; succeedDuration=213ms; failedDuration=3.2s; cachedDuration=0ms;loadCpus=0; loadMemory=0; peakRunning=5; peakCpus=5; peakMemory=0; ]
+Sep-23 20:20:09.100 [main] DEBUG nextflow.cache.CacheDB - Closing CacheDB done
+Sep-23 20:20:09.107 [main] DEBUG nextflow.script.ScriptRunner - > Execution complete -- Goodbye
