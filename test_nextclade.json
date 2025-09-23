@@ -1,0 +1,20 @@
+{
+  "results": [
+    {
+      "seqName": "test_sample",
+      "frameShifts": [
+        {
+          "cdsName": "ORF1a",
+          "codon": {"begin": 100, "end": 105}
+        }
+      ],
+      "stopCodons": [
+        {
+          "cdsName": "ORF1b", 
+          "codon": 200
+        }
+      ],
+      "aaSubstitutions": []
+    }
+  ]
+}

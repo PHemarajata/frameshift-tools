@@ -92,8 +92,19 @@ PY
 import json
 d=json.load(open("nextclade_sample_summary.json"))
 s=d.get("seqName","<unknown>")
-fs=(d.get("frameShifts",{}) or {}).get("frameShifts",[]) or []
-st=(d.get("stopCodons",{}) or {}).get("stopCodons",[]) or []
+# Handle frameShifts - it might be a dict with frameShifts key, or directly a list
+fs_data = d.get("frameShifts", {})
+if isinstance(fs_data, dict):
+    fs = fs_data.get("frameShifts", []) or []
+else:
+    fs = fs_data or []
+
+# Handle stopCodons - similar logic  
+sc_data = d.get("stopCodons", {})
+if isinstance(sc_data, dict):
+    st = sc_data.get("stopCodons", []) or []
+else:
+    st = sc_data or []
 aa=d.get("aaSubstitutions",[]) or []
 aa_stops=[x for x in aa if x.get("qryAa")=="*"]
 
@@ -321,8 +332,19 @@ for r in ilmn+ont:
 
 # Load Nextclade frameshifts & stop codons
 nc=json.load(open("nextclade_sample_summary.json"))
-nc_fs = [(f.get("cdsName","?"), f.get("codon",{}).get("begin"), f.get("codon",{}).get("end")) for f in (nc.get("frameShifts",{}) or {}).get("frameShifts",[])]
-nc_stops = [(e.get("cdsName","?"), e.get("codon")) for e in (nc.get("stopCodons",{}) or {}).get("stopCodons",[])]
+# Handle frameShifts - it might be a dict with frameShifts key, or directly a list
+fs_data = nc.get("frameShifts", {})
+if isinstance(fs_data, dict):
+    nc_fs = [(f.get("cdsName","?"), f.get("codon",{}).get("begin"), f.get("codon",{}).get("end")) for f in fs_data.get("frameShifts", [])]
+else:
+    nc_fs = [(f.get("cdsName","?"), f.get("codon",{}).get("begin"), f.get("codon",{}).get("end")) for f in (fs_data or [])]
+
+# Handle stopCodons - similar logic
+sc_data = nc.get("stopCodons", {})
+if isinstance(sc_data, dict):
+    nc_stops = [(e.get("cdsName","?"), e.get("codon")) for e in sc_data.get("stopCodons", [])]
+else:
+    nc_stops = [(e.get("cdsName","?"), e.get("codon")) for e in (sc_data or [])]
 nc_aa = nc.get("aaSubstitutions",[]) or []
 nc_aa_stops = [(x.get("cdsName","?"), x.get("pos")) for x in nc_aa if x.get("qryAa")=="*"]
 
