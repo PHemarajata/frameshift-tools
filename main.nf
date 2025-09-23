@@ -261,9 +261,11 @@ bwa-mem2 index ${fasta} || true
       output:
         path "frameshift_report.csv"
         path "harmonized_gene_map.tsv"
-      '''
+      script:
+      def alias_map_value = alias_map_path ?: ""
+      """
       set -euo pipefail
-export ALIAS_MAP="${alias_map_path ?: ''}"
+      export ALIAS_MAP="${alias_map_value}"
 
       # Intersections
       bedtools intersect -wa -wb -a ${ilmn} -b ${cds} > ilmn.cds.tsv || true
@@ -279,7 +281,7 @@ if alias_path and os.path.exists(alias_path):
     with open(alias_path) as f:
         for line in f:
             if not line.strip() or line.startswith("#"): continue
-            a=line.rstrip().split('\t')
+            a=line.rstrip().split('\\t')
             if len(a)>=2:
                 alias_map[a[0].strip()] = a[1].strip()
 
@@ -297,7 +299,7 @@ def harmonize_gene(attr_str):
     candidates = [attrs.get('gene'), attrs.get('Name'), attrs.get('locus_tag'), attrs.get('protein_id'), attrs.get('product')]
     for c in candidates:
         if c:
-            g = re.sub(r'^"|"$','',c).strip()
+            g = re.sub(r'^"|"\$','',c).strip()
             return alias_map.get(g, g)
     return ""
 
@@ -306,7 +308,7 @@ def load_intersections(path):
     if not os.path.exists(path) or os.path.getsize(path)==0: return out
     with open(path) as f:
         for line in f:
-            a=line.rstrip().split('\t')
+            a=line.rstrip().split('\\t')
             attr=a[15] if len(a)>15 else ""
             strand=a[17] if len(a)>17 else ""
             gene = harmonize_gene(attr)
@@ -379,7 +381,7 @@ with open("frameshift_report.csv","w",newline="") as f:
                     v.get("frameshift",""),v.get("ILMN_dp",""),v.get("ILMN_af",""),
                     v.get("ONT_dp",""),v.get("ONT_af",""), match])
 PY
-      '''
+      """
     }
 
     workflow {
