@@ -186,7 +186,7 @@ PY
       set -euo pipefail
       freebayes -f ${fasta} --min-alternate-fraction 0.2 --pooled-continuous ${bam} > ilmn.vcf
       bcftools norm -f ${fasta} -m -both ilmn.vcf \\
-        | bcftools filter -i 'QUAL>=20 && (TYPE="ins" || TYPE="del")' \\
+        | bcftools filter -i 'QUAL>=20 && TYPE="INDEL"' \\
         | bcftools sort -Oz -o ilmn.norm.indels.vcf.gz
       bcftools index ilmn.norm.indels.vcf.gz
       """
@@ -207,7 +207,7 @@ PY
       bcftools view -Oz -o ont.vcf.gz clair3_out/merge_output.vcf.gz
       bcftools index ont.vcf.gz
       bcftools norm -f ${fasta} -m -both ont.vcf.gz \\
-        | bcftools filter -i 'QUAL>=20 && (TYPE="ins" || TYPE="del")' \\
+        | bcftools filter -i 'QUAL>=20 && TYPE="INDEL"' \\
         | bcftools sort -Oz -o ont.norm.indels.vcf.gz
       bcftools index ont.norm.indels.vcf.gz
       """
