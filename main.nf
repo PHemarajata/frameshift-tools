@@ -183,44 +183,18 @@ PY
         path "ilmn.norm.indels.vcf.gz.tbi"
       script:
       """
-set -euo pipefail
-
-ref="BIDI_mpox_case2_hybrid_final.fa"
-bam="aln.ilmn.bam"
-
-# 1) Call variants
-freebayes -f "$ref" --min-alternate-fraction 0.2 --pooled-continuous "$bam" > ilmn.vcf
-
-# 2) Normalize, keep only INDELs (bcftools expects lowercase type)
-if [ -s ilmn.vcf ]; then
-  bcftools norm -f "$ref" -m -both ilmn.vcf \
-  | bcftools filter -i 'QUAL>=20 && TYPE="indel"' \
-  | bcftools sort -Oz -o ilmn.norm.indels.vcf.gz
-else
-  # No output from freebayes at all: create a minimal empty VCF (header only)
-  printf '##fileformat=VCFv4.2\n#CHROM\tPOS\tID\tREF\tALT\tQUAL\tFILTER\tINFO\n' \
-  | bgzip -c > ilmn.norm.indels.vcf.gz
-fi
-
-# If after filtering there are zero records, still leave a valid BGZF VCF
-if [ ! -s ilmn.norm.indels.vcf.gz ] || [ "$(bcftools view -H ilmn.norm.indels.vcf.gz | wc -l)" -eq 0 ]; then
-  bcftools view -h ilmn.vcf | bgzip -c > ilmn.norm.indels.vcf.gz
-fi
-
-# 3) Create a .tbi index (and tolerate environments that only make .csi)
-bcftools index -t ilmn.norm.indels.vcf.gz 2>/dev/null || true
-bcftools index -c ilmn.norm.indels.vcf.gz 2>/dev/null || true
-
-# Symlink .csi to .tbi if needed so Nextflow finds the expected filename
-if [ -f ilmn.norm.indels.vcf.gz.csi ] && [ ! -f ilmn.norm.indels.vcf.gz.tbi ]; then
-  ln -sf ilmn.norm.indels.vcf.gz.csi ilmn.norm.indels.vcf.gz.tbi
-fi
-
-# As a last resort (e.g., truly empty file where indexers refuse), create an empty .tbi placeholder
-if [ ! -f ilmn.norm.indels.vcf.gz.tbi ]; then
-  : > ilmn.norm.indels.vcf.gz.tbi
-fi
-
+      set -euo pipefail
+      freebayes -f ${fasta} --min-alternate-fraction 0.2 --pooled-continuous ${bam} > ilmn.vcf
+      bcftools norm -f ${fasta} -m -both ilmn.vcf \\
+        | bcftools filter -i 'QUAL>=20 && TYPE="INDEL"' \\
+        | bcftools sort -Oz -o ilmn.norm.indels.vcf.gz
+      
+      # Check if VCF has variants, if not create empty indexed VCF
+      if [ ! -s ilmn.norm.indels.vcf.gz ] || [ \$(bcftools view -H ilmn.norm.indels.vcf.gz | wc -l) -eq 0 ]; then
+        # Create empty VCF with proper header
+        bcftools view -h ilmn.vcf | bcftools sort -Oz -o ilmn.norm.indels.vcf.gz
+      fi
+      bcftools index ilmn.norm.indels.vcf.gz
       """
     }
 
@@ -234,44 +208,20 @@ fi
         path "ont.norm.indels.vcf.gz.tbi"
       script:
       """
-set -euo pipefail
-
-ref="BIDI_mpox_case2_hybrid_final.fa"
-bam="aln.ilmn.bam"
-
-# 1) Call variants
-freebayes -f "$ref" --min-alternate-fraction 0.2 --pooled-continuous "$bam" > ilmn.vcf
-
-# 2) Normalize, keep only INDELs (bcftools expects lowercase type)
-if [ -s ilmn.vcf ]; then
-  bcftools norm -f "$ref" -m -both ilmn.vcf \
-  | bcftools filter -i 'QUAL>=20 && TYPE="indel"' \
-  | bcftools sort -Oz -o ilmn.norm.indels.vcf.gz
-else
-  # No output from freebayes at all: create a minimal empty VCF (header only)
-  printf '##fileformat=VCFv4.2\n#CHROM\tPOS\tID\tREF\tALT\tQUAL\tFILTER\tINFO\n' \
-  | bgzip -c > ilmn.norm.indels.vcf.gz
-fi
-
-# If after filtering there are zero records, still leave a valid BGZF VCF
-if [ ! -s ilmn.norm.indels.vcf.gz ] || [ "$(bcftools view -H ilmn.norm.indels.vcf.gz | wc -l)" -eq 0 ]; then
-  bcftools view -h ilmn.vcf | bgzip -c > ilmn.norm.indels.vcf.gz
-fi
-
-# 3) Create a .tbi index (and tolerate environments that only make .csi)
-bcftools index -t ilmn.norm.indels.vcf.gz 2>/dev/null || true
-bcftools index -c ilmn.norm.indels.vcf.gz 2>/dev/null || true
-
-# Symlink .csi to .tbi if needed so Nextflow finds the expected filename
-if [ -f ilmn.norm.indels.vcf.gz.csi ] && [ ! -f ilmn.norm.indels.vcf.gz.tbi ]; then
-  ln -sf ilmn.norm.indels.vcf.gz.csi ilmn.norm.indels.vcf.gz.tbi
-fi
-
-# As a last resort (e.g., truly empty file where indexers refuse), create an empty .tbi placeholder
-if [ ! -f ilmn.norm.indels.vcf.gz.tbi ]; then
-  : > ilmn.norm.indels.vcf.gz.tbi
-fi
-
+      set -euo pipefail
+      clair3 --bam_fn=${bam} --ref_fn=${fasta} --threads=32 --platform=ont --output=clair3_out
+      bcftools view -Oz -o ont.vcf.gz clair3_out/merge_output.vcf.gz
+      bcftools index ont.vcf.gz
+      bcftools norm -f ${fasta} -m -both ont.vcf.gz \\
+        | bcftools filter -i 'QUAL>=20 && TYPE="INDEL"' \\
+        | bcftools sort -Oz -o ont.norm.indels.vcf.gz
+      
+      # Check if VCF has variants, if not create empty indexed VCF
+      if [ ! -s ont.norm.indels.vcf.gz ] || [ \$(bcftools view -H ont.norm.indels.vcf.gz | wc -l) -eq 0 ]; then
+        # Create empty VCF with proper header
+        bcftools view -h ont.vcf.gz | bcftools sort -Oz -o ont.norm.indels.vcf.gz
+      fi
+      bcftools index ont.norm.indels.vcf.gz
       """
     }
 
