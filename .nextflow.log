@@ -1,108 +1,114 @@
-Sep-24 09:58:20.665 [main] DEBUG nextflow.cli.Launcher - $> nextflow run main.nf -profile docker --sample BIDI_mpox_case2_hybrid_APHLproject_work_20250923_103207_DQ011155.1 --nextclade_json /home/phemarajata/Downloads/mpox_case2/nextclade.json --consensus /home/phemarajata/Downloads/mpox_case2/BIDI_mpox_case2_hybrid_final.fa --gff /home/phemarajata/Downloads/mpox_case2/sequence.gff3 --ilmn_r1 /home/phemarajata/Downloads/mpox_case2/mpxv_case2_250000111_S5_L001_R1_001.fastq.gz --ilmn_r2 /home/phemarajata/Downloads/mpox_case2/mpxv_case2_250000111_S5_L001_R2_001.fastq.gz --ont_fq /home/phemarajata/Downloads/mpox_case2/SImpxv_case2_nanopore.fastq.gz -resume
-Sep-24 09:58:20.750 [main] DEBUG nextflow.cli.CmdRun - N E X T F L O W  ~  version 25.04.6
-Sep-24 09:58:20.769 [main] DEBUG nextflow.plugin.PluginsFacade - Setting up plugin manager > mode=prod; embedded=false; plugins-dir=/home/phemarajata/.nextflow/plugins; core-plugins: nf-amazon@2.15.0,nf-azure@1.16.0,nf-cloudcache@0.4.3,nf-codecommit@0.2.3,nf-console@1.2.1,nf-google@1.21.1,nf-k8s@1.0.0,nf-tower@1.11.4,nf-wave@1.12.1
-Sep-24 09:58:20.795 [main] INFO  o.pf4j.DefaultPluginStatusProvider - Enabled plugins: []
-Sep-24 09:58:20.796 [main] INFO  o.pf4j.DefaultPluginStatusProvider - Disabled plugins: []
-Sep-24 09:58:20.800 [main] INFO  org.pf4j.DefaultPluginManager - PF4J version 3.12.0 in 'deployment' mode
-Sep-24 09:58:20.815 [main] INFO  org.pf4j.AbstractPluginManager - No plugins
-Sep-24 09:58:20.838 [main] DEBUG nextflow.config.ConfigBuilder - Found config local: /home/phemarajata/Downloads/frameshift-tools/nextflow.config
-Sep-24 09:58:20.842 [main] DEBUG nextflow.config.ConfigBuilder - Parsing config file: /home/phemarajata/Downloads/frameshift-tools/nextflow.config
-Sep-24 09:58:20.876 [main] DEBUG n.secret.LocalSecretsProvider - Secrets store: /home/phemarajata/.nextflow/secrets/store.json
-Sep-24 09:58:20.882 [main] DEBUG nextflow.secret.SecretsLoader - Discovered secrets providers: [nextflow.secret.LocalSecretsProvider@c68a5f8] - activable => nextflow.secret.LocalSecretsProvider@c68a5f8
-Sep-24 09:58:20.900 [main] DEBUG nextflow.config.ConfigBuilder - Applying config profile: `docker`
-Sep-24 09:58:21.305 [main] DEBUG nextflow.config.ConfigBuilder - Available config profiles: [docker]
-Sep-24 09:58:21.332 [main] DEBUG nextflow.cli.CmdRun - Applied DSL=2 from script declaration
-Sep-24 09:58:21.344 [main] DEBUG nextflow.cli.CmdRun - Launching `main.nf` [voluminous_gutenberg] DSL2 - revision: 3165229484
-Sep-24 09:58:21.345 [main] DEBUG nextflow.plugin.PluginsFacade - Plugins default=[]
-Sep-24 09:58:21.345 [main] DEBUG nextflow.plugin.PluginsFacade - Plugins resolved requirement=[]
-Sep-24 09:58:21.387 [main] DEBUG nextflow.Session - Session UUID: 7a333dd0-334b-4f45-9ce8-1c45ba2a6c28
-Sep-24 09:58:21.387 [main] DEBUG nextflow.Session - Run name: voluminous_gutenberg
-Sep-24 09:58:21.388 [main] DEBUG nextflow.Session - Executor pool size: 22
-Sep-24 09:58:21.396 [main] DEBUG nextflow.file.FilePorter - File porter settings maxRetries=3; maxTransfers=50; pollTimeout=null
-Sep-24 09:58:21.402 [main] DEBUG nextflow.util.ThreadPoolBuilder - Creating thread pool 'FileTransfer' minSize=10; maxSize=66; workQueue=LinkedBlockingQueue[-1]; allowCoreThreadTimeout=false
-Sep-24 09:58:21.419 [main] DEBUG nextflow.cli.CmdRun - 
+Sep-24 10:53:43.162 [main] DEBUG nextflow.cli.Launcher - $> nextflow run main.nf -profile docker --sample BIDI_mpox_case2_hybrid_APHLproject_work_20250923_103207_DQ011155.1 --nextclade_json /home/phemarajata/Downloads/mpox_case2/nextclade.json --consensus /home/phemarajata/Downloads/mpox_case2/BIDI_mpox_case2_hybrid_final.fa --gff /home/phemarajata/Downloads/mpox_case2/sequence.gff3 --ilmn_r1 /home/phemarajata/Downloads/mpox_case2/mpxv_case2_250000111_S5_L001_R1_001.fastq.gz --ilmn_r2 /home/phemarajata/Downloads/mpox_case2/mpxv_case2_250000111_S5_L001_R2_001.fastq.gz --ont_fq /home/phemarajata/Downloads/mpox_case2/SImpxv_case2_nanopore.fastq.gz
+Sep-24 10:53:43.284 [main] DEBUG nextflow.cli.CmdRun - N E X T F L O W  ~  version 25.04.6
+Sep-24 10:53:43.307 [main] DEBUG nextflow.plugin.PluginsFacade - Setting up plugin manager > mode=prod; embedded=false; plugins-dir=/home/phemarajata/.nextflow/plugins; core-plugins: nf-amazon@2.15.0,nf-azure@1.16.0,nf-cloudcache@0.4.3,nf-codecommit@0.2.3,nf-console@1.2.1,nf-google@1.21.1,nf-k8s@1.0.0,nf-tower@1.11.4,nf-wave@1.12.1
+Sep-24 10:53:43.327 [main] INFO  o.pf4j.DefaultPluginStatusProvider - Enabled plugins: []
+Sep-24 10:53:43.328 [main] INFO  o.pf4j.DefaultPluginStatusProvider - Disabled plugins: []
+Sep-24 10:53:43.330 [main] INFO  org.pf4j.DefaultPluginManager - PF4J version 3.12.0 in 'deployment' mode
+Sep-24 10:53:43.342 [main] INFO  org.pf4j.AbstractPluginManager - No plugins
+Sep-24 10:53:43.361 [main] DEBUG nextflow.config.ConfigBuilder - Found config local: /home/phemarajata/Downloads/frameshift-tools/nextflow.config
+Sep-24 10:53:43.364 [main] DEBUG nextflow.config.ConfigBuilder - Parsing config file: /home/phemarajata/Downloads/frameshift-tools/nextflow.config
+Sep-24 10:53:43.394 [main] DEBUG n.secret.LocalSecretsProvider - Secrets store: /home/phemarajata/.nextflow/secrets/store.json
+Sep-24 10:53:43.398 [main] DEBUG nextflow.secret.SecretsLoader - Discovered secrets providers: [nextflow.secret.LocalSecretsProvider@c68a5f8] - activable => nextflow.secret.LocalSecretsProvider@c68a5f8
+Sep-24 10:53:43.407 [main] DEBUG nextflow.config.ConfigBuilder - Applying config profile: `docker`
+Sep-24 10:53:43.794 [main] DEBUG nextflow.config.ConfigBuilder - Available config profiles: [docker]
+Sep-24 10:53:43.826 [main] DEBUG nextflow.cli.CmdRun - Applied DSL=2 from script declaration
+Sep-24 10:53:43.839 [main] DEBUG nextflow.cli.CmdRun - Launching `main.nf` [drunk_hodgkin] DSL2 - revision: 3165229484
+Sep-24 10:53:43.841 [main] DEBUG nextflow.plugin.PluginsFacade - Plugins default=[]
+Sep-24 10:53:43.841 [main] DEBUG nextflow.plugin.PluginsFacade - Plugins resolved requirement=[]
+Sep-24 10:53:43.879 [main] DEBUG nextflow.Session - Session UUID: 112c33c3-c065-4266-a736-b3299f719399
+Sep-24 10:53:43.879 [main] DEBUG nextflow.Session - Run name: drunk_hodgkin
+Sep-24 10:53:43.880 [main] DEBUG nextflow.Session - Executor pool size: 22
+Sep-24 10:53:43.886 [main] DEBUG nextflow.file.FilePorter - File porter settings maxRetries=3; maxTransfers=50; pollTimeout=null
+Sep-24 10:53:43.891 [main] DEBUG nextflow.util.ThreadPoolBuilder - Creating thread pool 'FileTransfer' minSize=10; maxSize=66; workQueue=LinkedBlockingQueue[-1]; allowCoreThreadTimeout=false
+Sep-24 10:53:43.906 [main] DEBUG nextflow.cli.CmdRun - 
   Version: 25.04.6 build 5954
   Created: 01-07-2025 11:27 UTC (18:27 ICST)
   System: Linux 6.14.0-29-generic
   Runtime: Groovy 4.0.26 on Java HotSpot(TM) 64-Bit Server VM 17.0.12+8-LTS-286
   Encoding: UTF-8 (UTF-8)
-  Process: 66244@phemarajata-Stealth-16-MercedesAMG-A1VGG [127.0.1.1]
-  CPUs: 22 - Mem: 62.3 GB (39.4 GB) - Swap: 8 GB (8 GB)
-Sep-24 09:58:21.449 [main] DEBUG nextflow.Session - Work-dir: /home/phemarajata/Downloads/frameshift-tools/work [ext2/ext3]
-Sep-24 09:58:21.450 [main] DEBUG nextflow.Session - Script base path does not exist or is not a directory: /home/phemarajata/Downloads/frameshift-tools/bin
-Sep-24 09:58:21.458 [main] DEBUG nextflow.executor.ExecutorFactory - Extension executors providers=[]
-Sep-24 09:58:21.470 [main] DEBUG nextflow.Session - Observer factory: DefaultObserverFactory
-Sep-24 09:58:21.476 [main] DEBUG nextflow.Session - Observer factory (v2): LinObserverFactory
-Sep-24 09:58:21.498 [main] DEBUG nextflow.cache.CacheFactory - Using Nextflow cache factory: nextflow.cache.DefaultCacheFactory
-Sep-24 09:58:21.506 [main] DEBUG nextflow.util.CustomThreadPool - Creating default thread pool > poolSize: 23; maxThreads: 1000
-Sep-24 09:58:21.560 [main] DEBUG nextflow.Session - Session start
-Sep-24 09:58:22.039 [main] DEBUG nextflow.script.ScriptRunner - > Launching execution
-Sep-24 09:58:22.118 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: local
-Sep-24 09:58:22.119 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
-Sep-24 09:58:22.123 [main] DEBUG nextflow.executor.Executor - [warm up] executor > local
-Sep-24 09:58:22.128 [main] DEBUG n.processor.LocalPollingMonitor - Creating local task monitor for executor 'local' > cpus=22; memory=62.3 GB; capacity=22; pollInterval=100ms; dumpInterval=5m
-Sep-24 09:58:22.130 [main] DEBUG n.processor.TaskPollingMonitor - >>> barrier register (monitor: local)
-Sep-24 09:58:22.153 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'EnsureDeps': maxForks=0; fair=false; array=0
-Sep-24 09:58:22.203 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: local
-Sep-24 09:58:22.204 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
-Sep-24 09:58:22.205 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'FilterNextcladeForSample': maxForks=0; fair=false; array=0
-Sep-24 09:58:22.215 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: local
-Sep-24 09:58:22.215 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
-Sep-24 09:58:22.216 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'MapIllumina': maxForks=0; fair=false; array=0
-Sep-24 09:58:22.222 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: local
-Sep-24 09:58:22.222 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
-Sep-24 09:58:22.224 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'CallIllumina': maxForks=0; fair=false; array=0
-Sep-24 09:58:22.233 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: local
-Sep-24 09:58:22.233 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
-Sep-24 09:58:22.235 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'MapONT': maxForks=0; fair=false; array=0
-Sep-24 09:58:22.244 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:CallONT` matches process CallONT
-Sep-24 09:58:22.246 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: local
-Sep-24 09:58:22.247 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
-Sep-24 09:58:22.248 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'CallONT': maxForks=0; fair=false; array=0
-Sep-24 09:58:22.258 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: local
-Sep-24 09:58:22.258 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
-Sep-24 09:58:22.260 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'MakeCdsBed': maxForks=0; fair=false; array=0
-Sep-24 09:58:22.305 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: local
-Sep-24 09:58:22.305 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
-Sep-24 09:58:22.307 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'IndelsToBeds': maxForks=0; fair=false; array=0
-Sep-24 09:58:22.322 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: local
-Sep-24 09:58:22.322 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
-Sep-24 09:58:22.323 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'VerifyFrameshifts': maxForks=0; fair=false; array=0
-Sep-24 09:58:22.327 [main] DEBUG nextflow.Session - Workflow process names [dsl2]: IndelsToBeds, MapIllumina, FilterNextcladeForSample, EnsureDeps, MapONT, VerifyFrameshifts, CallONT, MakeCdsBed, CallIllumina
-Sep-24 09:58:22.330 [main] DEBUG nextflow.Session - Igniting dataflow network (16)
-Sep-24 09:58:22.336 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > EnsureDeps
-Sep-24 09:58:22.337 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > FilterNextcladeForSample
-Sep-24 09:58:22.337 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > MapIllumina
-Sep-24 09:58:22.338 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > CallIllumina
-Sep-24 09:58:22.338 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > MapONT
-Sep-24 09:58:22.339 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > CallONT
-Sep-24 09:58:22.339 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > MakeCdsBed
-Sep-24 09:58:22.340 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > IndelsToBeds
-Sep-24 09:58:22.341 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > VerifyFrameshifts
-Sep-24 09:58:22.341 [main] DEBUG nextflow.script.ScriptRunner - Parsed script files:
+  Process: 88569@phemarajata-Stealth-16-MercedesAMG-A1VGG [127.0.1.1]
+  CPUs: 22 - Mem: 62.3 GB (25.3 GB) - Swap: 8 GB (8 GB)
+Sep-24 10:53:43.930 [main] DEBUG nextflow.Session - Work-dir: /home/phemarajata/Downloads/frameshift-tools/work [ext2/ext3]
+Sep-24 10:53:43.931 [main] DEBUG nextflow.Session - Script base path does not exist or is not a directory: /home/phemarajata/Downloads/frameshift-tools/bin
+Sep-24 10:53:43.942 [main] DEBUG nextflow.executor.ExecutorFactory - Extension executors providers=[]
+Sep-24 10:53:43.950 [main] DEBUG nextflow.Session - Observer factory: DefaultObserverFactory
+Sep-24 10:53:43.957 [main] DEBUG nextflow.Session - Observer factory (v2): LinObserverFactory
+Sep-24 10:53:43.985 [main] DEBUG nextflow.cache.CacheFactory - Using Nextflow cache factory: nextflow.cache.DefaultCacheFactory
+Sep-24 10:53:43.992 [main] DEBUG nextflow.util.CustomThreadPool - Creating default thread pool > poolSize: 23; maxThreads: 1000
+Sep-24 10:53:44.047 [main] DEBUG nextflow.Session - Session start
+Sep-24 10:53:44.504 [main] DEBUG nextflow.script.ScriptRunner - > Launching execution
+Sep-24 10:53:44.593 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: local
+Sep-24 10:53:44.593 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Sep-24 10:53:44.598 [main] DEBUG nextflow.executor.Executor - [warm up] executor > local
+Sep-24 10:53:44.603 [main] DEBUG n.processor.LocalPollingMonitor - Creating local task monitor for executor 'local' > cpus=22; memory=62.3 GB; capacity=22; pollInterval=100ms; dumpInterval=5m
+Sep-24 10:53:44.605 [main] DEBUG n.processor.TaskPollingMonitor - >>> barrier register (monitor: local)
+Sep-24 10:53:44.624 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'EnsureDeps': maxForks=0; fair=false; array=0
+Sep-24 10:53:44.689 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: local
+Sep-24 10:53:44.689 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Sep-24 10:53:44.690 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'FilterNextcladeForSample': maxForks=0; fair=false; array=0
+Sep-24 10:53:44.700 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: local
+Sep-24 10:53:44.700 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Sep-24 10:53:44.701 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'MapIllumina': maxForks=0; fair=false; array=0
+Sep-24 10:53:44.705 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: local
+Sep-24 10:53:44.705 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Sep-24 10:53:44.706 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'CallIllumina': maxForks=0; fair=false; array=0
+Sep-24 10:53:44.711 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: local
+Sep-24 10:53:44.712 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Sep-24 10:53:44.713 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'MapONT': maxForks=0; fair=false; array=0
+Sep-24 10:53:44.717 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:CallONT` matches process CallONT
+Sep-24 10:53:44.719 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: local
+Sep-24 10:53:44.719 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Sep-24 10:53:44.720 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'CallONT': maxForks=0; fair=false; array=0
+Sep-24 10:53:44.725 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: local
+Sep-24 10:53:44.725 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Sep-24 10:53:44.726 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'MakeCdsBed': maxForks=0; fair=false; array=0
+Sep-24 10:53:44.764 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: local
+Sep-24 10:53:44.764 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Sep-24 10:53:44.765 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'IndelsToBeds': maxForks=0; fair=false; array=0
+Sep-24 10:53:44.778 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: local
+Sep-24 10:53:44.779 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Sep-24 10:53:44.780 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'VerifyFrameshifts': maxForks=0; fair=false; array=0
+Sep-24 10:53:44.788 [main] DEBUG nextflow.Session - Workflow process names [dsl2]: IndelsToBeds, MapIllumina, FilterNextcladeForSample, EnsureDeps, MapONT, VerifyFrameshifts, CallONT, MakeCdsBed, CallIllumina
+Sep-24 10:53:44.793 [main] DEBUG nextflow.Session - Igniting dataflow network (16)
+Sep-24 10:53:44.802 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > EnsureDeps
+Sep-24 10:53:44.803 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > FilterNextcladeForSample
+Sep-24 10:53:44.804 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > MapIllumina
+Sep-24 10:53:44.804 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > CallIllumina
+Sep-24 10:53:44.805 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > MapONT
+Sep-24 10:53:44.805 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > CallONT
+Sep-24 10:53:44.806 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > MakeCdsBed
+Sep-24 10:53:44.806 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > IndelsToBeds
+Sep-24 10:53:44.806 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > VerifyFrameshifts
+Sep-24 10:53:44.806 [main] DEBUG nextflow.script.ScriptRunner - Parsed script files:
   Script_249195a09d0a63ab: /home/phemarajata/Downloads/frameshift-tools/main.nf
-Sep-24 09:58:22.342 [main] DEBUG nextflow.script.ScriptRunner - > Awaiting termination 
-Sep-24 09:58:22.342 [main] DEBUG nextflow.Session - Session await
-Sep-24 09:58:22.478 [Actor Thread 21] INFO  nextflow.processor.TaskProcessor - [96/23a0ae] Cached process > EnsureDeps (check_deps)
-Sep-24 09:58:22.479 [Actor Thread 17] INFO  nextflow.processor.TaskProcessor - [57/316af0] Cached process > MakeCdsBed (gff_to_bed)
-Sep-24 09:58:22.480 [Actor Thread 18] INFO  nextflow.processor.TaskProcessor - [27/233a8a] Cached process > FilterNextcladeForSample (BIDI_mpox_case2_hybrid_APHLproject_work_20250923_103207_DQ011155.1)
-Sep-24 09:58:22.488 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
-Sep-24 09:58:22.490 [Task submitter] INFO  nextflow.Session - [62/b23112] Submitted process > MapONT (map_ont)
-Sep-24 09:58:22.504 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
-Sep-24 09:58:22.505 [Task submitter] INFO  nextflow.Session - [4f/f60260] Submitted process > MapIllumina (map_illumina)
-Sep-24 09:58:36.074 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 2; name: MapIllumina (map_illumina); status: COMPLETED; exit: 0; error: -; workDir: /home/phemarajata/Downloads/frameshift-tools/work/4f/f6026016532fa1bfc93b932eab8ec3]
-Sep-24 09:58:36.075 [Task monitor] DEBUG nextflow.util.ThreadPoolBuilder - Creating thread pool 'TaskFinalizer' minSize=10; maxSize=66; workQueue=LinkedBlockingQueue[-1]; allowCoreThreadTimeout=false
-Sep-24 09:58:36.087 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
-Sep-24 09:58:36.088 [Task submitter] INFO  nextflow.Session - [04/b9476b] Submitted process > CallIllumina (call_illumina)
-Sep-24 09:58:59.065 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 6; name: CallIllumina (call_illumina); status: COMPLETED; exit: 0; error: -; workDir: /home/phemarajata/Downloads/frameshift-tools/work/04/b9476b76e30152e52b1d8c197788d7]
-Sep-24 10:00:48.888 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 4; name: MapONT (map_ont); status: COMPLETED; exit: 0; error: -; workDir: /home/phemarajata/Downloads/frameshift-tools/work/62/b23112026b3748df2e2b85d7ec7e05]
-Sep-24 10:00:48.908 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
-Sep-24 10:00:48.908 [Task submitter] INFO  nextflow.Session - [d4/85dd15] Submitted process > CallONT (call_ont)
-Sep-24 10:02:13.532 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 7; name: CallONT (call_ont); status: COMPLETED; exit: 127; error: -; workDir: /home/phemarajata/Downloads/frameshift-tools/work/d4/85dd151c5040ed218659083a9cd58c]
-Sep-24 10:02:13.537 [TaskFinalizer-4] DEBUG nextflow.processor.TaskProcessor - Handling unexpected condition for
-  task: name=CallONT (call_ont); work-dir=/home/phemarajata/Downloads/frameshift-tools/work/d4/85dd151c5040ed218659083a9cd58c
+Sep-24 10:53:44.806 [main] DEBUG nextflow.script.ScriptRunner - > Awaiting termination 
+Sep-24 10:53:44.807 [main] DEBUG nextflow.Session - Session await
+Sep-24 10:53:44.939 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Sep-24 10:53:44.941 [Task submitter] INFO  nextflow.Session - [02/6d3126] Submitted process > MapONT (map_ont)
+Sep-24 10:53:44.955 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Sep-24 10:53:44.956 [Task submitter] INFO  nextflow.Session - [79/6c0453] Submitted process > MakeCdsBed (gff_to_bed)
+Sep-24 10:53:44.962 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Sep-24 10:53:44.963 [Task submitter] INFO  nextflow.Session - [40/f03dbf] Submitted process > FilterNextcladeForSample (BIDI_mpox_case2_hybrid_APHLproject_work_20250923_103207_DQ011155.1)
+Sep-24 10:53:44.971 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Sep-24 10:53:44.972 [Task submitter] INFO  nextflow.Session - [d2/82fd49] Submitted process > MapIllumina (map_illumina)
+Sep-24 10:53:44.978 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Sep-24 10:53:44.979 [Task submitter] INFO  nextflow.Session - [fd/7766c8] Submitted process > EnsureDeps (check_deps)
+Sep-24 10:53:44.980 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 3; name: MakeCdsBed (gff_to_bed); status: COMPLETED; exit: 0; error: -; workDir: /home/phemarajata/Downloads/frameshift-tools/work/79/6c0453e767d0ee59566b2b611efae9]
+Sep-24 10:53:44.982 [Task monitor] DEBUG nextflow.util.ThreadPoolBuilder - Creating thread pool 'TaskFinalizer' minSize=10; maxSize=66; workQueue=LinkedBlockingQueue[-1]; allowCoreThreadTimeout=false
+Sep-24 10:53:44.991 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 1; name: EnsureDeps (check_deps); status: COMPLETED; exit: 0; error: -; workDir: /home/phemarajata/Downloads/frameshift-tools/work/fd/7766c8aeefbed20dbf4cd201dacc7b]
+Sep-24 10:53:45.213 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 5; name: FilterNextcladeForSample (BIDI_mpox_case2_hybrid_APHLproject_work_20250923_103207_DQ011155.1); status: COMPLETED; exit: 0; error: -; workDir: /home/phemarajata/Downloads/frameshift-tools/work/40/f03dbfa2f57e16fffaae0b395c45f7]
+Sep-24 10:53:58.293 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 4; name: MapIllumina (map_illumina); status: COMPLETED; exit: 0; error: -; workDir: /home/phemarajata/Downloads/frameshift-tools/work/d2/82fd499a4648c527cc0fcd21cf292f]
+Sep-24 10:53:58.304 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Sep-24 10:53:58.305 [Task submitter] INFO  nextflow.Session - [e8/0162d4] Submitted process > CallIllumina (call_illumina)
+Sep-24 10:54:21.200 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 6; name: CallIllumina (call_illumina); status: COMPLETED; exit: 0; error: -; workDir: /home/phemarajata/Downloads/frameshift-tools/work/e8/0162d4b63ce96ee34a5e3b2091a02d]
+Sep-24 10:56:13.437 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 2; name: MapONT (map_ont); status: COMPLETED; exit: 0; error: -; workDir: /home/phemarajata/Downloads/frameshift-tools/work/02/6d3126ac0858c9b866d9f5ec79702b]
+Sep-24 10:56:13.463 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Sep-24 10:56:13.464 [Task submitter] INFO  nextflow.Session - [85/e6fb8a] Submitted process > CallONT (call_ont)
+Sep-24 10:56:13.687 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 7; name: CallONT (call_ont); status: COMPLETED; exit: 127; error: -; workDir: /home/phemarajata/Downloads/frameshift-tools/work/85/e6fb8ac3e0f24c37dcb535be58d72f]
+Sep-24 10:56:13.691 [TaskFinalizer-7] DEBUG nextflow.processor.TaskProcessor - Handling unexpected condition for
+  task: name=CallONT (call_ont); work-dir=/home/phemarajata/Downloads/frameshift-tools/work/85/e6fb8ac3e0f24c37dcb535be58d72f
   error [nextflow.exception.ProcessFailedException]: Process `CallONT (call_ont)` terminated with an error exit status (127)
-Sep-24 10:02:13.558 [TaskFinalizer-4] ERROR nextflow.processor.TaskProcessor - Error executing process > 'CallONT (call_ont)'
+Sep-24 10:56:13.701 [TaskFinalizer-7] ERROR nextflow.processor.TaskProcessor - Error executing process > 'CallONT (call_ont)'
 
 Caused by:
   Process `CallONT (call_ont)` terminated with an error exit status (127)
@@ -137,62 +143,18 @@ Command output:
   (empty)
 
 Command error:
-  Unable to find image 'hkubal/clair3:latest' locally
-  latest: Pulling from hkubal/clair3
-  42c077c10790: Pulling fs layer
-  1a23c9d790a3: Pulling fs layer
-  22a6fc63b9b5: Pulling fs layer
-  b0bcd0b296b9: Pulling fs layer
-  804927d637c8: Pulling fs layer
-  1dc00a0e357c: Pulling fs layer
-  430285eb07b7: Pulling fs layer
-  88e5cc18611d: Pulling fs layer
-  5b6ef502fd0b: Pulling fs layer
-  b0bcd0b296b9: Waiting
-  804927d637c8: Waiting
-  1dc00a0e357c: Waiting
-  430285eb07b7: Waiting
-  88e5cc18611d: Waiting
-  42c077c10790: Download complete
-  42c077c10790: Pull complete
-  1a23c9d790a3: Verifying Checksum
-  1a23c9d790a3: Download complete
-  1a23c9d790a3: Pull complete
-  804927d637c8: Verifying Checksum
-  804927d637c8: Download complete
-  b0bcd0b296b9: Verifying Checksum
-  b0bcd0b296b9: Download complete
-  22a6fc63b9b5: Verifying Checksum
-  22a6fc63b9b5: Download complete
-  22a6fc63b9b5: Pull complete
-  88e5cc18611d: Verifying Checksum
-  88e5cc18611d: Download complete
-  1dc00a0e357c: Verifying Checksum
-  1dc00a0e357c: Download complete
-  b0bcd0b296b9: Pull complete
-  804927d637c8: Pull complete
-  1dc00a0e357c: Pull complete
-  430285eb07b7: Verifying Checksum
-  430285eb07b7: Download complete
-  430285eb07b7: Pull complete
-  88e5cc18611d: Pull complete
-  5b6ef502fd0b: Verifying Checksum
-  5b6ef502fd0b: Download complete
-  5b6ef502fd0b: Pull complete
-  Digest: sha256:8d2e8988be3372c44b85658338ae9aaee36af6e8217c11c0a5b0395e53a59c7e
-  Status: Downloaded newer image for hkubal/clair3:latest
   .command.sh: line 3: clair3: command not found
 
 Work dir:
-  /home/phemarajata/Downloads/frameshift-tools/work/d4/85dd151c5040ed218659083a9cd58c
+  /home/phemarajata/Downloads/frameshift-tools/work/85/e6fb8ac3e0f24c37dcb535be58d72f
 
 Container:
   hkubal/clair3:latest
 
-Tip: you can replicate the issue by changing to the process work dir and entering the command `bash .command.run`
-Sep-24 10:02:13.564 [TaskFinalizer-4] DEBUG nextflow.Session - Session aborted -- Cause: Process `CallONT (call_ont)` terminated with an error exit status (127)
-Sep-24 10:02:13.567 [Actor Thread 7] DEBUG nextflow.util.HashBuilder - Unable to get file attributes file: /home/phemarajata/Downloads/frameshift-tools/NO_FILE -- Cause: java.nio.file.NoSuchFileException: /home/phemarajata/Downloads/frameshift-tools/NO_FILE
-Sep-24 10:02:13.575 [TaskFinalizer-4] DEBUG nextflow.Session - The following nodes are still active:
+Tip: you can try to figure out what's wrong by changing to the process work dir and showing the script file named `.command.sh`
+Sep-24 10:56:13.703 [TaskFinalizer-7] DEBUG nextflow.Session - Session aborted -- Cause: Process `CallONT (call_ont)` terminated with an error exit status (127)
+Sep-24 10:56:13.707 [Actor Thread 19] DEBUG nextflow.util.HashBuilder - Unable to get file attributes file: /home/phemarajata/Downloads/frameshift-tools/NO_FILE -- Cause: java.nio.file.NoSuchFileException: /home/phemarajata/Downloads/frameshift-tools/NO_FILE
+Sep-24 10:56:13.713 [TaskFinalizer-7] DEBUG nextflow.Session - The following nodes are still active:
 [process] VerifyFrameshifts
   status=ACTIVE
   port 0: (queue) OPEN  ; channel: cds
@@ -202,9 +164,9 @@ Sep-24 10:02:13.575 [TaskFinalizer-4] DEBUG nextflow.Session - The following nod
   port 4: (value) bound ; channel: alias_map_path
   port 5: (cntrl) -     ; channel: $
 
-Sep-24 10:02:13.579 [main] DEBUG nextflow.Session - Session await > all processes finished
-Sep-24 10:02:13.579 [main] DEBUG nextflow.Session - Session await > all barriers passed
-Sep-24 10:02:13.579 [Task monitor] DEBUG n.processor.TaskPollingMonitor - <<< barrier arrives (monitor: local) - terminating tasks monitor poll loop
-Sep-24 10:02:13.585 [main] DEBUG n.trace.WorkflowStatsObserver - Workflow completed > WorkflowStats[succeededCount=3; failedCount=1; ignoredCount=0; cachedCount=3; pendingCount=1; submittedCount=0; runningCount=0; retriesCount=0; abortedCount=0; succeedDuration=3m 3s; failedDuration=1m 25s; cachedDuration=242ms;loadCpus=0; loadMemory=0; peakRunning=2; peakCpus=2; peakMemory=0; ]
-Sep-24 10:02:13.773 [main] DEBUG nextflow.cache.CacheDB - Closing CacheDB done
-Sep-24 10:02:13.781 [main] DEBUG nextflow.script.ScriptRunner - > Execution complete -- Goodbye
+Sep-24 10:56:13.715 [main] DEBUG nextflow.Session - Session await > all processes finished
+Sep-24 10:56:13.715 [Task monitor] DEBUG n.processor.TaskPollingMonitor - <<< barrier arrives (monitor: local) - terminating tasks monitor poll loop
+Sep-24 10:56:13.715 [main] DEBUG nextflow.Session - Session await > all barriers passed
+Sep-24 10:56:13.721 [main] DEBUG n.trace.WorkflowStatsObserver - Workflow completed > WorkflowStats[succeededCount=6; failedCount=1; ignoredCount=0; cachedCount=0; pendingCount=1; submittedCount=0; runningCount=0; retriesCount=0; abortedCount=0; succeedDuration=3m 5s; failedDuration=151ms; cachedDuration=0ms;loadCpus=0; loadMemory=0; peakRunning=5; peakCpus=5; peakMemory=0; ]
+Sep-24 10:56:13.913 [main] DEBUG nextflow.cache.CacheDB - Closing CacheDB done
+Sep-24 10:56:13.923 [main] DEBUG nextflow.script.ScriptRunner - > Execution complete -- Goodbye
