@@ -37,6 +37,7 @@
     // -------- Nextclade parsing --------
     process FilterNextcladeForSample {
       tag "${params.sample}"
+      publishDir "results/nextclade", mode: 'copy'
       input:
         path json
       output:
@@ -177,6 +178,7 @@ PY
     // -------- Variant calling --------
     process CallIllumina {
       tag "call_illumina"
+      publishDir "results/variants", mode: 'copy'
       input:
         path fasta
         path bam
@@ -208,6 +210,7 @@ PY
     process CallONT {
       tag "call_ont"
       container 'staphb/clair3:1.2.0'
+      publishDir "results/variants", mode: 'copy'
       input:
         path fasta
         path bam
@@ -228,6 +231,7 @@ PY
     
     process ProcessONTVCF {
       tag "process_ont_vcf"
+      publishDir "results/variants", mode: 'copy'
       input:
         path fasta
         path raw_vcf
@@ -261,6 +265,7 @@ PY
     // -------- GFF3 -> BED (keep attributes for NCBI names) --------
     process MakeCdsBed {
       tag "gff_to_bed"
+      publishDir "results/annotations", mode: 'copy'
       input:
         path gff
       output:
@@ -276,6 +281,7 @@ PY
     // -------- VCF -> BED-like rows --------
     process IndelsToBeds {
       tag "indels_to_bed"
+      publishDir "results/indels", mode: 'copy'
       input:
         path ilmn_vcf, stageAs: "ilmn.norm.indels.vcf.gz"
         path ont_vcf, stageAs: "ont.norm.indels.vcf.gz"
@@ -300,6 +306,7 @@ PY
     // -------- Verify frameshifts & harmonize gene names --------
     process VerifyFrameshifts {
       tag "verify_and_harmonize"
+      publishDir "results/final", mode: 'copy'
       input:
         path cds
         path ilmn
