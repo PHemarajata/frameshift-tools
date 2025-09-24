@@ -16,6 +16,8 @@
     params.ilmn_r1        = null
     params.ilmn_r2        = null
     params.ont_fq         = null
+    params.model_path  = null  // let us override; default below
+
     // Optional: TSV with columns: ncbi_name  nextclade_name
     params.alias_map      = null
 
@@ -205,16 +207,21 @@ PY
 
     process CallONT {
       tag "call_ont"
+      container 'hkubal/clair3:latest'
       input:
         path fasta
         path bam
+        val  model_path
       output:
         path "ont.norm.indels.vcf.gz"
         path "ont.norm.indels.vcf.gz.tbi"
       script:
       """
       set -euo pipefail
-      clair3 --bam_fn=${bam} --ref_fn=${fasta} --threads=32 --platform=ont --output=clair3_out
+      samtools index ${bam}
+      samtools faidx ${fasta}
+      conda activate clair3
+      bash run_clair3.sh --bam_fn=${bam} --ref_fn=${fasta} --model_path="${model_path}" --threads=32 --platform=ont --output=clair3_out
       bcftools view -Oz -o ont.vcf.gz clair3_out/merge_output.vcf.gz
       bcftools index ont.vcf.gz
       bcftools norm -f ${fasta} -m -both ont.vcf.gz \\
@@ -417,6 +424,7 @@ PY
   ilmn_r1_ch    = params.ilmn_r1 ? Channel.fromPath(params.ilmn_r1) : Channel.empty()
   ilmn_r2_ch    = params.ilmn_r2 ? Channel.fromPath(params.ilmn_r2) : Channel.empty()
   ont_fq_ch     = params.ont_fq   ? Channel.fromPath(params.ont_fq)   : Channel.empty()
+  model_ch      = Channel.value( params.model_path ?: '/opt/models/r1041_e82_400bps_sup_v430' )
 
   EnsureDeps()
 
@@ -433,7 +441,7 @@ PY
 
   if (params.ont_fq) {
     MapONT(ont_fq_ch, consensus_ch)
-    CallONT(consensus_ch, MapONT.out[0])  // First output is BAM file
+    CallONT(consensus_ch, MapONT.out[0], model_ch)  // First output is BAM file
     ont_vcf_ch = CallONT.out[0]  // First output is VCF file
   } else {
     ont_vcf_ch = Channel.empty()
