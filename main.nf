@@ -212,9 +212,8 @@ PY
         path fasta
         path bam
         val  model_path
-    output:
-        path "ont.norm.indels.vcf.gz"
-        path "ont.norm.indels.vcf.gz.tbi"
+      output:
+        path "ont.raw.vcf.gz"
       script:
       """
       set -euo pipefail
@@ -458,8 +457,8 @@ PY
 
   if (params.ont_fq) {
     MapONT(ont_fq_ch, consensus_ch)
-  CallONT(consensus_ch, MapONT.out[0], model_ch)  // Clair3 in container
-  ProcessONTVCF(consensus_ch, CallONT.out)        // bcftools on host
+    CallONT(consensus_ch, MapONT.out[0], model_ch)  // Clair3 in container
+    ProcessONTVCF(consensus_ch, CallONT.out)        // bcftools on host
     ont_vcf_ch = ProcessONTVCF.out[0]  // First output is processed VCF file
   } else {
     ont_vcf_ch = Channel.empty()
