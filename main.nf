@@ -212,7 +212,7 @@ PY
         path fasta
         path bam
         val  model_path
-      output:
+    output:
         path "ont.norm.indels.vcf.gz"
         path "ont.norm.indels.vcf.gz.tbi"
       script:
@@ -220,8 +220,25 @@ PY
       set -euo pipefail
       samtools index ${bam}
       samtools faidx ${fasta}
-      bash /clair3/run_clair3.sh --bam_fn=${bam} --ref_fn=${fasta} --model_path="${model_path}" --threads=32 --platform=ont --output=clair3_out
-      bcftools view -Oz -o ont.vcf.gz clair3_out/merge_output.vcf.gz
+      bash /clair3/run_clair3.sh --bam_fn=${bam} --ref_fn=${fasta} --model_path="${model_path}" --threads=32 --platform=ont --output=clair3_out --include_all_ctgs
+      
+      # Copy the VCF output 
+      cp clair3_out/merge_output.vcf.gz ont.raw.vcf.gz
+      """
+    }
+    
+    process ProcessONTVCF {
+      tag "process_ont_vcf"
+      input:
+        path fasta
+        path raw_vcf
+      output:
+        path "ont.norm.indels.vcf.gz"
+        path "ont.norm.indels.vcf.gz.tbi"
+      script:
+      """
+      set -euo pipefail
+      bcftools view -Oz -o ont.vcf.gz ${raw_vcf}
       bcftools index ont.vcf.gz
       bcftools norm -f ${fasta} -m -both ont.vcf.gz \\
         | bcftools filter -i 'QUAL>=20 && TYPE="INDEL"' \\
@@ -240,6 +257,7 @@ PY
       }
       """
     }
+
 
     // -------- GFF3 -> BED (keep attributes for NCBI names) --------
     process MakeCdsBed {
@@ -440,8 +458,9 @@ PY
 
   if (params.ont_fq) {
     MapONT(ont_fq_ch, consensus_ch)
-    CallONT(consensus_ch, MapONT.out[0], model_ch)  // First output is BAM file
-    ont_vcf_ch = CallONT.out[0]  // First output is VCF file
+  CallONT(consensus_ch, MapONT.out[0], model_ch)  // Clair3 in container
+  ProcessONTVCF(consensus_ch, CallONT.out)        // bcftools on host
+    ont_vcf_ch = ProcessONTVCF.out[0]  // First output is processed VCF file
   } else {
     ont_vcf_ch = Channel.empty()
   }
