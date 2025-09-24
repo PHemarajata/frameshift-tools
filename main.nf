@@ -322,9 +322,20 @@ PY
       set -euo pipefail
       export ALIAS_MAP="${alias_map_value}"
 
-      # Intersections
-      bedtools intersect -wa -wb -a ${ilmn} -b ${cds} > ilmn.cds.tsv || true
-      bedtools intersect -wa -wb -a ${ont}  -b ${cds} > ont.cds.tsv  || true
+      # Fix contig name mismatch before intersections
+      # Extract short contig names from indels files to match CDS file
+      sed 's/^BIDI_mpox_case2_hybrid_APHLproject_work_20250923_103207_//' ${ilmn} > ilmn_fixed.bed
+      sed 's/^BIDI_mpox_case2_hybrid_APHLproject_work_20250923_103207_//' ${ont} > ont_fixed.bed
+      
+      # Intersections with fixed contig names
+      bedtools intersect -wa -wb -a ilmn_fixed.bed -b ${cds} > ilmn.cds.tsv || true
+      bedtools intersect -wa -wb -a ont_fixed.bed -b ${cds} > ont.cds.tsv || true
+      
+      # Debug: Check intersection results
+      echo "DEBUG: ILMN intersections:" >&2
+      wc -l ilmn.cds.tsv >&2
+      echo "DEBUG: ONT intersections:" >&2
+      wc -l ont.cds.tsv >&2
 
       python3 - <<'PY'
 import csv, json, os, re
@@ -426,15 +437,40 @@ with open("harmonized_gene_map.tsv","w",newline="") as f:
     w.writeheader()
     w.writerows(harm)
 
+# Create Nextclade-based frameshift verification report
 with open("frameshift_report.csv","w",newline="") as f:
     w=csv.writer(f)
-    w.writerow(["chrom","pos","gene","strand","ref","alt","indel_len","frameshift",
-                "ilmn_dp","ilmn_af","ont_dp","ont_af","matches_nextclade_gene"])
-    for (chrom,pos,ref,alt,gene),v in sorted(by.items()):
-        match = "yes" if any(gene==cds or gene==cds.split('|')[0] for (cds,_,_) in nc_fs) else "no"
-        w.writerow([chrom,pos,gene,v.get("strand",""),ref,alt,v.get("len",""),
-                    v.get("frameshift",""),v.get("ILMN_dp",""),v.get("ILMN_af",""),
-                    v.get("ONT_dp",""),v.get("ONT_af",""), match])
+    w.writerow(["nextclade_gene","codon_range","ilmn_indels_found","ilmn_max_dp","ilmn_max_af",
+                "ont_indels_found","ont_max_dp","ont_max_af","concordance_status"])
+    
+    # Process each Nextclade frameshift
+    for cds,beg,end in nc_fs:
+        codon_range = f"{beg}-{end}" if beg and end else "unknown"
+        
+        # Count indels for this gene (simple approach for now)
+        ilmn_gene_indels = [r for r in ilmn if r["gene"] == cds or cds in r["gene"]]
+        ont_gene_indels = [r for r in ont if r["gene"] == cds or cds in r["gene"]]
+        
+        ilmn_count = len(ilmn_gene_indels)
+        ilmn_max_dp = max([float(r["dp"]) for r in ilmn_gene_indels], default=0)
+        ilmn_max_af = max([float(r["af"]) for r in ilmn_gene_indels], default=0)
+        
+        ont_count = len(ont_gene_indels)
+        ont_max_dp = max([float(r["dp"]) for r in ont_gene_indels], default=0)
+        ont_max_af = max([float(r["af"]) for r in ont_gene_indels], default=0)
+        
+        # Determine concordance
+        if ilmn_count > 0 and ont_count > 0:
+            concordance = "both_platforms"
+        elif ilmn_count > 0 or ont_count > 0:
+            concordance = "single_platform"
+        else:
+            concordance = "no_evidence"
+        
+        w.writerow([cds, codon_range, ilmn_count, ilmn_max_dp, ilmn_max_af,
+                    ont_count, ont_max_dp, ont_max_af, concordance])
+
+print(f"DEBUG: Processed {len(nc_fs)} Nextclade frameshifts")
 PY
       """
     }
