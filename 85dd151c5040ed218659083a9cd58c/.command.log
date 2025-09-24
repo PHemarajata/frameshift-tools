@@ -1,0 +1,45 @@
+Unable to find image 'hkubal/clair3:latest' locally
+latest: Pulling from hkubal/clair3
+42c077c10790: Pulling fs layer
+1a23c9d790a3: Pulling fs layer
+22a6fc63b9b5: Pulling fs layer
+b0bcd0b296b9: Pulling fs layer
+804927d637c8: Pulling fs layer
+1dc00a0e357c: Pulling fs layer
+430285eb07b7: Pulling fs layer
+88e5cc18611d: Pulling fs layer
+5b6ef502fd0b: Pulling fs layer
+b0bcd0b296b9: Waiting
+804927d637c8: Waiting
+1dc00a0e357c: Waiting
+430285eb07b7: Waiting
+88e5cc18611d: Waiting
+42c077c10790: Download complete
+42c077c10790: Pull complete
+1a23c9d790a3: Verifying Checksum
+1a23c9d790a3: Download complete
+1a23c9d790a3: Pull complete
+804927d637c8: Verifying Checksum
+804927d637c8: Download complete
+b0bcd0b296b9: Verifying Checksum
+b0bcd0b296b9: Download complete
+22a6fc63b9b5: Verifying Checksum
+22a6fc63b9b5: Download complete
+22a6fc63b9b5: Pull complete
+88e5cc18611d: Verifying Checksum
+88e5cc18611d: Download complete
+1dc00a0e357c: Verifying Checksum
+1dc00a0e357c: Download complete
+b0bcd0b296b9: Pull complete
+804927d637c8: Pull complete
+1dc00a0e357c: Pull complete
+430285eb07b7: Verifying Checksum
+430285eb07b7: Download complete
+430285eb07b7: Pull complete
+88e5cc18611d: Pull complete
+5b6ef502fd0b: Verifying Checksum
+5b6ef502fd0b: Download complete
+5b6ef502fd0b: Pull complete
+Digest: sha256:8d2e8988be3372c44b85658338ae9aaee36af6e8217c11c0a5b0395e53a59c7e
+Status: Downloaded newer image for hkubal/clair3:latest
+/home/phemarajata/Downloads/frameshift-tools/work/d4/85dd151c5040ed218659083a9cd58c/.command.sh: line 3: clair3: command not found

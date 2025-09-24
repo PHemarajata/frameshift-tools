@@ -196,7 +196,7 @@ PY
       fi
       
       # Try to create index, if it fails create empty placeholder
-      bcftools index ilmn.norm.indels.vcf.gz || {
+      bcftools index -t ilmn.norm.indels.vcf.gz || {
         echo "Warning: bcftools index failed, creating empty .tbi file"
         touch ilmn.norm.indels.vcf.gz.tbi
       }
@@ -228,7 +228,7 @@ PY
       fi
       
       # Try to create index, if it fails create empty placeholder
-      bcftools index ont.norm.indels.vcf.gz || {
+      bcftools index -t ont.norm.indels.vcf.gz || {
         echo "Warning: bcftools index failed, creating empty .tbi file"
         touch ont.norm.indels.vcf.gz.tbi
       }

@@ -1,10 +1,10 @@
 #!/bin/bash
 ### ---
-### name: 'MapONT (map_ont)'
-### container: 'null'
+### name: 'CallONT (call_ont)'
+### container: 'hkubal/clair3:latest'
 ### outputs:
-### - 'aln.ont.bam'
-### - 'aln.ont.bam.bai'
+### - 'ont.norm.indels.vcf.gz'
+### - 'ont.norm.indels.vcf.gz.tbi'
 ### ...
 set -e
 set -u
@@ -87,26 +87,27 @@ on_exit() {
     local exit_status=${nxf_main_ret:=0}
     [[ ${exit_status} -eq 0 && ${nxf_unstage_ret:=0} -ne 0 ]] && exit_status=${nxf_unstage_ret:=0}
     [[ ${exit_status} -eq 0 && ${last_err} -ne 0 ]] && exit_status=${last_err}
-    printf -- $exit_status > /home/phemarajata/Downloads/frameshift-tools/work/83/02bb0ecaca787baf12fba182e97146/.exitcode
+    printf -- $exit_status > /home/phemarajata/Downloads/frameshift-tools/work/d4/85dd151c5040ed218659083a9cd58c/.exitcode
     set +u
+    docker rm $NXF_BOXID &>/dev/null || true
     exit $exit_status
 }
 
 on_term() {
     set +e
-    [[ "$pid" ]] && nxf_kill $pid
+    docker stop $NXF_BOXID
 }
 
 nxf_launch() {
-    /bin/bash -ue /home/phemarajata/Downloads/frameshift-tools/work/83/02bb0ecaca787baf12fba182e97146/.command.sh
+    docker run -i --cpu-shares 1024 -e "NXF_TASK_WORKDIR" -v /home/phemarajata/Downloads:/home/phemarajata/Downloads -w "$NXF_TASK_WORKDIR" --name $NXF_BOXID hkubal/clair3:latest /bin/bash -ue /home/phemarajata/Downloads/frameshift-tools/work/d4/85dd151c5040ed218659083a9cd58c/.command.sh
 }
 
 nxf_stage() {
     true
     # stage input files
-    rm -f SImpxv_case2_nanopore.fastq.gz
+    rm -f aln.ont.bam
     rm -f BIDI_mpox_case2_hybrid_final.fa
-    ln -s /home/phemarajata/Downloads/mpox_case2/SImpxv_case2_nanopore.fastq.gz SImpxv_case2_nanopore.fastq.gz
+    ln -s /home/phemarajata/Downloads/frameshift-tools/work/62/b23112026b3748df2e2b85d7ec7e05/aln.ont.bam aln.ont.bam
     ln -s /home/phemarajata/Downloads/mpox_case2/BIDI_mpox_case2_hybrid_final.fa BIDI_mpox_case2_hybrid_final.fa
 }
 
@@ -132,9 +133,10 @@ nxf_main() {
     trap '' USR1
 
     [[ "${NXF_CHDIR:-}" ]] && cd "$NXF_CHDIR"
+    export NXF_BOXID="nxf-$(dd bs=18 count=1 if=/dev/urandom 2>/dev/null | base64 | tr +/ 0A | tr -d '\r\n')"
     NXF_SCRATCH=''
     [[ $NXF_DEBUG > 0 ]] && nxf_env
-    touch /home/phemarajata/Downloads/frameshift-tools/work/83/02bb0ecaca787baf12fba182e97146/.command.begin
+    touch /home/phemarajata/Downloads/frameshift-tools/work/d4/85dd151c5040ed218659083a9cd58c/.command.begin
     set +u
     set -u
     [[ $NXF_SCRATCH ]] && cd $NXF_SCRATCH
