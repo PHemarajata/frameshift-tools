@@ -1,10 +1,10 @@
 #!/bin/bash
 ### ---
-### name: 'IndelsToBeds (indels_to_bed)'
+### name: 'VerifyFrameshifts (verify_and_harmonize)'
 ### container: 'null'
 ### outputs:
-### - 'ilmn.indels.bed'
-### - 'ont.indels.bed'
+### - 'frameshift_report.csv'
+### - 'harmonized_gene_map.tsv'
 ### ...
 set -e
 set -u
@@ -87,7 +87,7 @@ on_exit() {
     local exit_status=${nxf_main_ret:=0}
     [[ ${exit_status} -eq 0 && ${nxf_unstage_ret:=0} -ne 0 ]] && exit_status=${nxf_unstage_ret:=0}
     [[ ${exit_status} -eq 0 && ${last_err} -ne 0 ]] && exit_status=${last_err}
-    printf -- $exit_status > /home/phemarajata/Downloads/frameshift-tools/work/dd/1c302c925f240525929f0816ef811d/.exitcode
+    printf -- $exit_status > /home/phemarajata/Downloads/frameshift-tools/work/73/28b2d710a1842b367b781b8577f2cb/.exitcode
     set +u
     exit $exit_status
 }
@@ -98,16 +98,20 @@ on_term() {
 }
 
 nxf_launch() {
-    /bin/bash -ue /home/phemarajata/Downloads/frameshift-tools/work/dd/1c302c925f240525929f0816ef811d/.command.sh
+    /bin/bash -ue /home/phemarajata/Downloads/frameshift-tools/work/73/28b2d710a1842b367b781b8577f2cb/.command.sh
 }
 
 nxf_stage() {
     true
     # stage input files
-    rm -f ilmn.norm.indels.vcf.gz
-    rm -f ont.norm.indels.vcf.gz
-    ln -s /home/phemarajata/Downloads/frameshift-tools/work/06/ef87b33b8da51e818dfd20318364d3/ilmn.norm.indels.vcf.gz ilmn.norm.indels.vcf.gz
-    ln -s /home/phemarajata/Downloads/frameshift-tools/work/94/1dc99a8825b327c56209f6494dc216/ont.norm.indels.vcf.gz ont.norm.indels.vcf.gz
+    rm -f ilmn.indels.bed
+    rm -f cds.bed
+    rm -f nextclade_sample_summary.json
+    rm -f ont.indels.bed
+    ln -s /home/phemarajata/Downloads/frameshift-tools/work/f2/c5d989a9a68ca4f8b2a055ecd32732/ilmn.indels.bed ilmn.indels.bed
+    ln -s /home/phemarajata/Downloads/frameshift-tools/work/79/6c0453e767d0ee59566b2b611efae9/cds.bed cds.bed
+    ln -s /home/phemarajata/Downloads/frameshift-tools/work/40/f03dbfa2f57e16fffaae0b395c45f7/nextclade_sample_summary.json nextclade_sample_summary.json
+    ln -s /home/phemarajata/Downloads/frameshift-tools/work/f2/c5d989a9a68ca4f8b2a055ecd32732/ont.indels.bed ont.indels.bed
 }
 
 nxf_unstage_outputs() {
@@ -134,7 +138,7 @@ nxf_main() {
     [[ "${NXF_CHDIR:-}" ]] && cd "$NXF_CHDIR"
     NXF_SCRATCH=''
     [[ $NXF_DEBUG > 0 ]] && nxf_env
-    touch /home/phemarajata/Downloads/frameshift-tools/work/dd/1c302c925f240525929f0816ef811d/.command.begin
+    touch /home/phemarajata/Downloads/frameshift-tools/work/73/28b2d710a1842b367b781b8577f2cb/.command.begin
     set +u
     set -u
     [[ $NXF_SCRATCH ]] && cd $NXF_SCRATCH
