@@ -2,8 +2,7 @@
 set -euo pipefail
 samtools index aln.ont.bam
 samtools faidx BIDI_mpox_case2_hybrid_final.fa
-conda activate clair3
-bash run_clair3.sh --bam_fn=aln.ont.bam --ref_fn=BIDI_mpox_case2_hybrid_final.fa --model_path="/opt/models/r1041_e82_400bps_sup_v430" --threads=32 --platform=ont --output=clair3_out
+bash /clair3/run_clair3.sh --bam_fn=aln.ont.bam --ref_fn=BIDI_mpox_case2_hybrid_final.fa --model_path="/clair3/models/ont" --threads=32 --platform=ont --output=clair3_out
 bcftools view -Oz -o ont.vcf.gz clair3_out/merge_output.vcf.gz
 bcftools index ont.vcf.gz
 bcftools norm -f BIDI_mpox_case2_hybrid_final.fa -m -both ont.vcf.gz \

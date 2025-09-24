@@ -1,0 +1,1 @@
+/clair3/run_clair3.sh --bam_fn=aln.ont.bam --ref_fn=BIDI_mpox_case2_hybrid_final.fa --model_path=/clair3/models/ont --threads=32 --platform=ont --output=clair3_out

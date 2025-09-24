@@ -207,7 +207,7 @@ PY
 
     process CallONT {
       tag "call_ont"
-      container 'hkubal/clair3:latest'
+      container 'staphb/clair3:1.2.0'
       input:
         path fasta
         path bam
@@ -220,8 +220,7 @@ PY
       set -euo pipefail
       samtools index ${bam}
       samtools faidx ${fasta}
-      conda activate clair3
-      bash run_clair3.sh --bam_fn=${bam} --ref_fn=${fasta} --model_path="${model_path}" --threads=32 --platform=ont --output=clair3_out
+      bash /clair3/run_clair3.sh --bam_fn=${bam} --ref_fn=${fasta} --model_path="${model_path}" --threads=32 --platform=ont --output=clair3_out
       bcftools view -Oz -o ont.vcf.gz clair3_out/merge_output.vcf.gz
       bcftools index ont.vcf.gz
       bcftools norm -f ${fasta} -m -both ont.vcf.gz \\
@@ -424,7 +423,7 @@ PY
   ilmn_r1_ch    = params.ilmn_r1 ? Channel.fromPath(params.ilmn_r1) : Channel.empty()
   ilmn_r2_ch    = params.ilmn_r2 ? Channel.fromPath(params.ilmn_r2) : Channel.empty()
   ont_fq_ch     = params.ont_fq   ? Channel.fromPath(params.ont_fq)   : Channel.empty()
-  model_ch      = Channel.value( params.model_path ?: '/opt/models/r1041_e82_400bps_sup_v430' )
+  model_ch      = Channel.value( params.model_path ?: '/clair3/models/ont' )
 
   EnsureDeps()
 
